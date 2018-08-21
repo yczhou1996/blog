@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js fixed-layout" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Amaze UI Admin index Examples</title>
@@ -15,6 +15,11 @@
     <link rel="stylesheet" th:href="@{/assets/css/amazeui.min.css}"/>
     <link rel="stylesheet" th:href="@{/assets/css/admin.css}">
     <script th:src="@{//cdn.bootcss.com/jquery/2.2.3/jquery.min.js}"></script>
+    <style>
+        .iframeurl{
+            cursor:pointer;
+        }
+    </style>
 </head>
 <body>
 <!--[if lte IE 9]>
@@ -58,12 +63,12 @@
     <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
         <div class="am-offcanvas-bar admin-offcanvas-bar">
             <ul class="am-list admin-sidebar-list">
-                <li><a href="admin-index.html"><span class="am-icon-home"></span> 首页</a></li>
+                <li><a name="/home" class="iframeurl"><span class="am-icon-home"></span> 首页</a></li>
                 <li class="admin-parent">
                     <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span>
                         页面模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
                     <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
-                        <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 个人资料<span
+                        <li><a name="/admin/user" class="am-cf iframeurl"><span class="am-icon-check"></span> 个人资料<span
                                 class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
                         <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
                         <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 相册页面<span
@@ -113,6 +118,11 @@
 <script>
     $(function () {
         $("#iframe").height($(window).height() - 50);
+    });
+
+    $(document).on('click', '.iframeurl', function () {
+        var cid = $(this).attr("name");
+        $("#iframe").attr("src", cid);
     });
 </script>
 </body>

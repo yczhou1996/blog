@@ -102,7 +102,7 @@
         $.ajax({
             type: "POST",
             url: "/login",
-            data: $("loginForm").serialize(),
+            data: $("#loginForm").serialize(),
             async: false,
             dataType: "JSON",
             success: function (result) {

@@ -35,4 +35,12 @@ public interface IUserService {
      * @return
      */
     UserVo login(String username, String password);
+
+
+    /**
+     * 保存用户资料
+     * @param userVo
+     * @return
+     */
+    String saveInfo(UserVo userVo);
 }
