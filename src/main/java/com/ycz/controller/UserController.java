@@ -13,7 +13,6 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -29,7 +28,7 @@ public class UserController {
 
     @GetMapping(value = "")
     public String index(Model model){
-        UserVo userVo = userService.queryUserById(1);
+        UserVo userVo = userService.queryById(1);
         if(null != userVo.getPhoto() && StringUtils.isNotBlank(userVo.getPhoto())) {
             model.addAttribute("src", userVo.getPhoto());
         }
@@ -39,7 +38,7 @@ public class UserController {
     @PostMapping(value = "")
     @ResponseBody
     public RestResponseBo profile(){
-        UserVo userVo = userService.queryUserById(1);//todo 登录
+        UserVo userVo = userService.queryById(1);//todo 登录
         return RestResponseBo.ok(userVo);
     }
 
@@ -55,7 +54,7 @@ public class UserController {
 
     @PostMapping(value = "/savePhoto")
     @ResponseBody
-    public RestResponseBo uploadPhoto(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request){
+    public RestResponseBo uploadPhoto(@RequestParam("file") MultipartFile multipartFile){
         String fname = multipartFile.getOriginalFilename();
         if (multipartFile.getSize() <= WebConst.MAX_FILE_SIZE) {
             String fkey = FileUploadUtil.getFileKey(fname);

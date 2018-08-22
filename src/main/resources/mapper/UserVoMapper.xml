@@ -19,15 +19,15 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from user
+    from t_user
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from user
+    delete from t_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.ycz.model.Vo.UserVo" >
-    insert into user (id, username, password, 
+    insert into t_user (id, username, password,
       fullname, email, phone,
       qq, weibo, intro
       )
@@ -37,7 +37,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="com.ycz.model.Vo.UserVo" >
-    insert into user
+    insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -104,7 +104,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.ycz.model.Vo.UserVo" >
-    update user
+    update t_user
     <set >
       <if test="username != null" >
         username = #{username,jdbcType=VARCHAR},
@@ -137,7 +137,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ycz.model.Vo.UserVo" >
-    update user
+    update t_user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       fullname = #{fullname,jdbcType=VARCHAR},

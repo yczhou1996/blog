@@ -5,7 +5,7 @@ import com.ycz.model.Vo.UserVo;
 public interface IUserService {
 
     /**
-     * 新增用户数据
+     * 新增对象
      * @param userVo
      * @return
      */
@@ -13,7 +13,7 @@ public interface IUserService {
 
 
     /**
-     * 修改用户数据
+     * 修改对象
      * @param userVo
      * @return
      */
@@ -25,7 +25,7 @@ public interface IUserService {
      * @param Id
      * @return
      */
-    UserVo queryUserById(Integer Id);
+    UserVo queryById(Integer Id);
 
 
     /**

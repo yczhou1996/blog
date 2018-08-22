@@ -2,6 +2,7 @@ package com.ycz.service.impl;
 
 import com.ycz.constant.WebConst;
 import com.ycz.dao.UserVoMapper;
+import com.ycz.exception.TipException;
 import com.ycz.model.Vo.UserVo;
 import com.ycz.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
@@ -25,13 +26,18 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UserVo queryUserById(Integer Id) {
+    public UserVo queryById(Integer Id) {
         return userVoDao.selectByPrimaryKey(Id);
     }
 
     @Override
     public UserVo login(String username, String password) {
-        return null;
+        if(StringUtils.isBlank(username) || StringUtils.isBlank(password)){
+            throw new TipException("账号或密码不能为空");
+        }
+
+
+        return new UserVo();
     }
 
     @Override

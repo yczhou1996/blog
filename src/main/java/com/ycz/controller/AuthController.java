@@ -1,8 +1,10 @@
 package com.ycz.controller;
 
+import com.ycz.constant.WebConst;
 import com.ycz.model.Bo.RestResponseBo;
 import com.ycz.model.Vo.UserVo;
 import com.ycz.service.IUserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +33,10 @@ public class AuthController {
                                   HttpServletResponse response){
 
         UserVo user = userService.login(username, password);
+        request.setAttribute(WebConst.LOGIN_SESSION_KEY, user);
+        if(StringUtils.isNotBlank(remeber_me)){
 
+        }
         return RestResponseBo.ok();
     }
 }
