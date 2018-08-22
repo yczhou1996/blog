@@ -16,6 +16,18 @@
   <sql id="Base_Column_List" >
     id, username, password, fullname, email, phone, qq, weibo, intro, photo
   </sql>
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByNameAndPass" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    where username = #{username,jdbcType=VARCHAR} and password = #{password, jdbcType=VARCHAR}
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

@@ -35,9 +35,14 @@ public class UserServiceImpl implements IUserService {
         if(StringUtils.isBlank(username) || StringUtils.isBlank(password)){
             throw new TipException("账号或密码不能为空");
         }
-
-
-        return new UserVo();
+        UserVo user = userVoDao.selectByUsername(username);
+        if(null == user){
+            throw new TipException("用户名不存在");
+        }
+        if(password != user.getPassword()){
+            throw  new TipException("密码错误");
+        }
+        return user;
     }
 
     @Override

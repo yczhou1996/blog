@@ -16,4 +16,8 @@ public interface UserVoMapper {
     int updateByPrimaryKeySelective(UserVo record);
 
     int updateByPrimaryKey(UserVo record);
+
+    UserVo selectByUsername(String username);
+
+    UserVo selectByNameAndPass(String username, String password);
 }
