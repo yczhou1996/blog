@@ -39,8 +39,8 @@ public class UserServiceImpl implements IUserService {
         if(null == user){
             throw new TipException("用户名不存在");
         }
-        if(password != user.getPassword()){
-            throw  new TipException("密码错误");
+        if(!password.equals(user.getPassword())) {
+            throw new TipException("密码错误");
         }
         return user;
     }
