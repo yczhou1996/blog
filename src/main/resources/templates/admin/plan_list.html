@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="layout :: htmlhead">
     <meta charset="UTF-8">
-    <title>article</title>
+    <title>plan</title>
 </head>
 <body>
 <!-- content start -->
@@ -20,9 +20,10 @@
             <div class="am-u-sm-12 am-u-md-6">
                 <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
-                        <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增
+                        <button type="button" class="am-btn am-btn-default" data-am-modal="{target: '#addPlan'}">
+                            <span class="am-icon-plus"></span> 新增
                         </button>
-                        <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除
+                        <button type="button" class="am-btn am-btn-default" onclick="delPlans()"><span class="am-icon-trash-o"></span> 删除
                         </button>
                     </div>
                 </div>
@@ -53,28 +54,25 @@
                             <th class="table-check"><input type="checkbox"/></th>
                             <th class="table-id">ID</th>
                             <th class="table-title">标题</th>
-                            <th class="table-type">类别</th>
-                            <th class="table-author am-hide-sm-only">作者</th>
-                            <th class="table-date am-hide-sm-only">修改日期</th>
+                            <th class="table-date am-hide-sm-only">开始日期</th>
+                            <th class="table-date am-hide-sm-only">到期日期</th>
+                            <th class="table-type">状态</th>
                             <th class="table-set">操作</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody th:each="plan:${plans.list}">
                         <tr>
-                            <td><input type="checkbox"/></td>
-                            <td>1</td>
-                            <td><a href="#">Business management</a></td>
+                            <td><input type="checkbox"/><input type="hidden" th:value="${plan.id}"/></td>
+                            <td></td>
+                            <td><a href="#" th:text="${plan.title}"></a></td>
+                            <td class="am-hide-sm-only" th:text="${plan.startTime}"></td>
+                            <td class="am-hide-sm-only" th:text="${plan.endTime}"></td>
                             <td>default</td>
-                            <td class="am-hide-sm-only">测试1号</td>
-                            <td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
                                         <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span
                                                 class="am-icon-pencil-square-o"></span> 编辑
-                                        </button>
-                                        <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span
-                                                class="am-icon-copy"></span> 复制
                                         </button>
                                         <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only">
                                             <span class="am-icon-trash-o"></span> 删除
@@ -112,6 +110,51 @@
     </footer>
 
 </div>
+<div class="am-popup" id="addPlan">
+    <div class="am-popup-inner">
+        <div class="am-popup-hd">
+            <h4 class="am-popup-title"></h4>
+            <span data-am-modal-close
+                  class="am-close">&times;</span>
+        </div>
+        <div class="am-popup-bd">
+            <form id="planForm" class="am-form" data-am-validator>
+                <fieldset>
+                    <input type="hidden" name="id" />
+                    <div class="am-form-group">
+                        <label for="doc-vld-name-2">计划：</label>
+                        <input type="text" id="doc-vld-name-2" name="title" placeholder="输入计划" required/>
+                    </div>
+
+                    <div class="am-form-group">
+                    <div class="am-alert am-alert-danger" id="my-alert" style="display: none">
+                        <p>开始日期应小于结束日期！</p>
+                    </div>
+                    </div>
+
+                    <div class="am-form-group" style="height: 35px">
+                        <div class="am-u-sm-6">
+                            <button type="button" class="am-btn am-btn-default am-margin-right" id="my-start">开始日期</button>
+                            <span id="my-startDate" name="startTime"></span>
+                        </div>
+                        <div class="am-u-sm-6">
+                            <button type="button" class="am-btn am-btn-default am-margin-right" id="my-end">结束日期</button>
+                            <span id="my-endDate" name="endTime"></span>
+                        </div>
+                    </div>
+
+                    <div class="am-form-group">
+                        <label for="doc-vld-ta-2">简介：</label>
+                        <textarea id="doc-vld-ta-2" maxlength="100" name="content" placeholder="最多输入100字" required></textarea>
+                    </div>
+
+                    <button class="am-btn am-btn-secondary" type="button" onclick="editPlan()">提交</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/plan.js}"></script>
 <!-- content end -->
 </body>
 </html>

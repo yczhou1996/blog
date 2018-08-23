@@ -21,7 +21,6 @@ public class BaseInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         String contextPath = request.getContextPath();
         System.out.println(contextPath);
-        System.out.println("-------------拦截开始--------------");
         String uri = request.getRequestURI();
 
         UserVo user = CommonsUtil.getLoginUser(request);

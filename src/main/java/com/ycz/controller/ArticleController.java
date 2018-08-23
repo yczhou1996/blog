@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(value = "admin/artilce")
+@RequestMapping(value = "admin/article")
 public class ArticleController {
 
     @Autowired
     private IArticleService articleService;
 
-    @GetMapping(value = "list")
+    @GetMapping(value = "/list")
     public String index(){
         return "admin/article_list";
     }
 
-    @GetMapping(value = "edit")
+    @GetMapping(value = "/edit")
     public String edit(){
         return "admin/article_edit";
     }
