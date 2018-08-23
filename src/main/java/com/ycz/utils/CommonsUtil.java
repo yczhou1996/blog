@@ -2,8 +2,10 @@ package com.ycz.utils;
 
 import com.ycz.constant.WebConst;
 import com.ycz.model.Vo.UserVo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -23,5 +25,44 @@ public class CommonsUtil {
         return (UserVo) session.getAttribute(WebConst.LOGIN_SESSION_KEY);
     }
 
+    /**
+     * 获取指定cookie
+     * @param request
+     * @return
+     */
+    public static Cookie getCookie(HttpServletRequest request, String name){
+        Cookie[] cookies = request.getCookies();
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals(name)){
+                return cookie;
+            }
+        }
+        return null;
+    }
 
+    /**
+     * 获取cookie 中的userId
+     * @param request
+     * @return
+     */
+    public static Integer getCookieId(HttpServletRequest request){
+        if(null != request){
+            Cookie cookie = getCookie(request, WebConst.USER_IN_COOKIE);
+            if(null != cookie && null != cookie.getValue()){
+                String id = cookie.getValue();
+                if(StringUtils.isNotBlank(id) && isNumber(id)){
+                    return Integer.valueOf(id);
+                }
+            }
+
+        }
+        return null;
+    }
+
+    public static Boolean isNumber(String str){
+        if(StringUtils.isBlank(str) && 0 != str.trim().length() && str.matches("\\d*")){
+            return true;
+        }
+        return false;
+    }
 }
