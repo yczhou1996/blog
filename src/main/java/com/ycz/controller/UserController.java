@@ -4,15 +4,16 @@ import com.ycz.constant.WebConst;
 import com.ycz.model.Bo.RestResponseBo;
 import com.ycz.model.Vo.UserVo;
 import com.ycz.service.IUserService;
+import com.ycz.utils.CommonsUtil;
 import com.ycz.utils.FileUploadUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -27,18 +28,20 @@ public class UserController {
     private IUserService userService;
 
     @GetMapping(value = "")
-    public String index(Model model){
-        UserVo userVo = userService.queryById(1);
+    public String index(HttpServletRequest request){
+        UserVo userVo = CommonsUtil.getLoginUser(request);
+        userVo = userService.queryById(userVo.getId());
         if(null != userVo.getPhoto() && StringUtils.isNotBlank(userVo.getPhoto())) {
-            model.addAttribute("src", userVo.getPhoto());
+            request.setAttribute("src", userVo.getPhoto());
         }
         return "admin/user";
     }
 
     @PostMapping(value = "")
     @ResponseBody
-    public RestResponseBo profile(){
-        UserVo userVo = userService.queryById(1);//todo 登录
+    public RestResponseBo profile(HttpServletRequest request){
+        UserVo userVo = CommonsUtil.getLoginUser(request);
+        userVo = userService.queryById(userVo.getId());
         return RestResponseBo.ok(userVo);
     }
 
@@ -54,7 +57,7 @@ public class UserController {
 
     @PostMapping(value = "/savePhoto")
     @ResponseBody
-    public RestResponseBo uploadPhoto(@RequestParam("file") MultipartFile multipartFile){
+    public RestResponseBo uploadPhoto(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request){
         String fname = multipartFile.getOriginalFilename();
         if (multipartFile.getSize() <= WebConst.MAX_FILE_SIZE) {
             String fkey = FileUploadUtil.getFileKey(fname);
@@ -65,7 +68,8 @@ public class UserController {
                 String msg = "上传失败";
                 return RestResponseBo.fail(msg);
             }
-            userService.update(new UserVo(1, fkey));
+            UserVo userVo = CommonsUtil.getLoginUser(request);
+            userService.update(new UserVo(userVo.getId(), fkey));
         } else {
             String msg = "文件过大";
             return RestResponseBo.fail(msg);

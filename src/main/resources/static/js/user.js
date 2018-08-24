@@ -1,3 +1,4 @@
+var chou = new chou();
 $(function () {
     fillUser();
 });
@@ -35,7 +36,11 @@ function saveInfo() {
         dataType:"JSON",
         async:false,
         success:function (result) {
-            alert("ok");
+            if(result && result.success){
+                chou.showOk("修改成功");
+            }else{
+                chou.showError(result.msg || "修改失败");
+            }
         }
     })
 }

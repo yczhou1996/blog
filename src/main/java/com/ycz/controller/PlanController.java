@@ -6,10 +6,15 @@ import com.ycz.model.Bo.RestResponseBo;
 import com.ycz.model.Vo.PlanVo;
 import com.ycz.service.IPlanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @RequestMapping("admin/plan")
@@ -35,5 +40,32 @@ public class PlanController {
             return RestResponseBo.fail(result);
         }
         return RestResponseBo.ok();
+    }
+
+    @PostMapping(value = "/findById")
+    @ResponseBody
+    public RestResponseBo findById(Integer id){
+        PlanVo planVo = planService.queryById(id);
+        if(null != planVo){
+            return RestResponseBo.ok(planVo);
+        }
+        return RestResponseBo.fail();
+    }
+
+    @PostMapping(value = "/delete")
+    @ResponseBody
+    public RestResponseBo delPlan(Integer id){
+        Integer result = planService.delete(id);
+        if(null != result){
+            return RestResponseBo.ok();
+        }
+        return RestResponseBo.fail();
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        //转换日期
+        DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));// CustomDateEditor为自定义日期编辑器
     }
 }

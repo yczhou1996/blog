@@ -4,9 +4,11 @@ import com.ycz.constant.WebConst;
 import com.ycz.model.Vo.UserVo;
 import com.ycz.service.IUserService;
 import com.ycz.utils.CommonsUtil;
+import com.ycz.utils.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +18,9 @@ public class BaseInterceptor implements HandlerInterceptor {
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private DateUtil dateUtil;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
@@ -36,5 +41,10 @@ public class BaseInterceptor implements HandlerInterceptor {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
+        httpServletRequest.setAttribute("dateUtil", dateUtil);
     }
 }

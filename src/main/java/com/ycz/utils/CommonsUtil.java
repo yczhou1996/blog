@@ -59,6 +59,11 @@ public class CommonsUtil {
         return null;
     }
 
+    /**
+     * 判断是否为数字
+     * @param str
+     * @return
+     */
     public static Boolean isNumber(String str){
         if(StringUtils.isBlank(str) && 0 != str.trim().length() && str.matches("\\d*")){
             return true;

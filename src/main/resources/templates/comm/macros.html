@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead">
+</head>
+<body>
+<div th:fragment="pageAdminNav(pageInfo)">
+    <div class="am-cf">
+        <div class="am-fr">
+            <ul class="am-pagination">
+                <li th:if="${pageInfo.hasPreviousPage}">
+                    <a th:href="@{'?page='+${pageInfo.prePage}}">«</a>
+                </li>
+
+                <th:block th:each="nav : ${pageInfo.navigatepageNums}">
+                    <li th:class="${nav==pageInfo.pageNum}?'am-active':''">
+                        <a th:href="@{'?page='+${nav}}" th:text="${nav}"></a>
+                    </li>
+                </th:block>
+
+                <th:block th:if="${pageInfo.hasNextPage}">
+                    <li>
+                        <a th:href="@{'?page='+${pageInfo.nextPage}}">»</a>
+                    </li>
+                </th:block>
+                <li><span th:text="'共'+${pageInfo.pages}+'页'"></span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

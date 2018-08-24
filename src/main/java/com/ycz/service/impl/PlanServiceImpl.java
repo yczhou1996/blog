@@ -30,11 +30,17 @@ public class PlanServiceImpl implements IPlanService {
 
     @Override
     public PlanVo queryById(Integer Id) {
-        return planVoDao.selectByPrimaryKey(Id);
+        if(null != Id){
+            return planVoDao.selectByPrimaryKey(Id);
+        }
+        return null;
     }
 
     @Override
     public Integer delete(Integer Id) {
+        if(null != Id){
+            return planVoDao.deleteByPrimaryKey(Id);
+        }
         return null;
     }
 
