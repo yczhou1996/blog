@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Random;
 
 @Component
 public class CommonsUtil {
@@ -69,5 +70,17 @@ public class CommonsUtil {
             return true;
         }
         return false;
+    }
+
+    public static String[] color = {"primary","secondary","success","warning","danger"};
+
+    /**
+     * 获取随机颜色
+     * @return
+     */
+    public static String rand_color(){
+        Random random = new Random();
+        int rand = random.nextInt(color.length);
+        return color[rand];
     }
 }

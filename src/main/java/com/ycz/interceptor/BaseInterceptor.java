@@ -22,6 +22,9 @@ public class BaseInterceptor implements HandlerInterceptor {
     @Autowired
     private DateUtil dateUtil;
 
+    @Autowired
+    private CommonsUtil commonsUtil;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         String contextPath = request.getContextPath();
@@ -46,5 +49,6 @@ public class BaseInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
         httpServletRequest.setAttribute("dateUtil", dateUtil);
+        httpServletRequest.setAttribute("common", commonsUtil);
     }
 }
