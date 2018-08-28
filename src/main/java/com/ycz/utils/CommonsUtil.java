@@ -83,4 +83,14 @@ public class CommonsUtil {
         int rand = random.nextInt(color.length);
         return color[rand];
     }
+
+    public static boolean exists_cate(String categories, Integer categoryId){
+        String[] arr = categories.split(",");
+        for(String category : arr){
+            if(category.trim().equals(categoryId.toString())){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -5,10 +5,27 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="author_id" property="authorId" jdbcType="INTEGER" />
+    <result column="categories" property="categories" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, title, content
+    id, title, content, author_id, categories, add_time, update_time
   </sql>
+
+  <resultMap id="ArticleResultMap" type="com.ycz.model.Vo.ArticleVo" extends="BaseResultMap">
+    <association property="userVo" javaType="com.ycz.model.Vo.UserVo">
+      <id column="uid" property="id" jdbcType="INTEGER" />
+      <result column="fullname" property="fullname" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+  <select id="selectArticles" resultMap="ArticleResultMap">
+    select
+    ta.id, ta.title, ta.content, ta.author_id, ta.categories, ta.add_time, ta.update_time, ta.id uid, tu.fullname
+    from t_article ta join t_user tu on ta.author_id = tu.id
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -25,7 +42,7 @@
     values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.ycz.model.Vo.ArticleVo" >
+  <insert id="insertSelective" parameterType="com.ycz.model.Vo.ArticleVo" keyProperty="id" useGeneratedKeys="true">
     insert into t_article
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -36,6 +53,15 @@
       </if>
       <if test="content != null" >
         content,
+      </if>
+      <if test="authorId != null" >
+        author_id,
+      </if>
+      <if test="categories != null" >
+        categories,
+      </if>
+      <if test="addTime != null" >
+        add_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -48,6 +74,15 @@
       <if test="content != null" >
         #{content,jdbcType=VARCHAR},
       </if>
+      <if test="authorId != null" >
+        #{authorId,jdbcType=INTEGER},
+      </if>
+      <if test="categories != null" >
+        #{categories,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.ycz.model.Vo.ArticleVo" >
@@ -59,13 +94,20 @@
       <if test="content != null" >
         content = #{content,jdbcType=VARCHAR},
       </if>
+      <if test="categories != null" >
+        categories = #{categories,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ycz.model.Vo.ArticleVo" >
     update t_article
     set title = #{title,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR}
+      content = #{content,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

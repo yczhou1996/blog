@@ -1,5 +1,6 @@
 package com.ycz.service;
 
+import com.github.pagehelper.PageInfo;
 import com.ycz.model.Vo.ArticleVo;
 
 public interface IArticleService {
@@ -27,8 +28,26 @@ public interface IArticleService {
      */
     ArticleVo queryById(Integer Id);
 
+
     /**
      * 删除对象
      */
     Integer delete(Integer id);
+
+
+    /**
+     * 发表文章
+     * @param articleVo
+     * @return
+     */
+    String publish(ArticleVo articleVo);
+
+
+    /**
+     * 获取所有文章
+     * @param page
+     * @param limit
+     * @return
+     */
+    PageInfo<ArticleVo> selectArticles(Integer page, Integer limit);
 }

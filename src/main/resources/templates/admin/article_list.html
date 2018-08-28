@@ -13,9 +13,7 @@
                 <small>Table</small>
             </div>
         </div>
-
         <hr>
-
         <div class="am-g">
             <div class="am-u-sm-12 am-u-md-6">
                 <div class="am-btn-toolbar">
@@ -25,21 +23,6 @@
                         <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除
                         </button>
                     </div>
-                </div>
-            </div>
-            <div class="am-u-sm-12 am-u-md-3">
-                <div class="am-form-group">
-                    <select data-am-selected="{btnSize: 'sm'}">
-                        <option value="option1">所有类别</option>
-                    </select>
-                </div>
-            </div>
-            <div class="am-u-sm-12 am-u-md-3">
-                <div class="am-input-group am-input-group-sm">
-                    <input type="text" class="am-form-field">
-                    <span class="am-input-group-btn">
-            <button class="am-btn am-btn-default" type="button">搜索</button>
-          </span>
                 </div>
             </div>
         </div>
@@ -53,52 +36,33 @@
                             <th class="table-check"><input type="checkbox"/></th>
                             <th class="table-id">ID</th>
                             <th class="table-title">标题</th>
-                            <th class="table-type">类别</th>
                             <th class="table-author am-hide-sm-only">作者</th>
-                            <th class="table-date am-hide-sm-only">修改日期</th>
+                            <th class="table-date am-hide-sm-only">发布日期</th>
                             <th class="table-set">操作</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody th:each="a,astat:${articles.list}">
                         <tr>
-                            <td><input type="checkbox"/></td>
-                            <td>1</td>
-                            <td><a href="#">Business management</a></td>
-                            <td>default</td>
-                            <td class="am-hide-sm-only">测试1号</td>
-                            <td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
+                            <td><input type="checkbox"/><input type="hidden" th:value="${a.id}"/></td>
+                            <td th:text="${astat.index + 1}"></td>
+                            <td><a href="#" th:text="${a.title}"></a></td>
+                            <td class="am-hide-sm-only" th:text="${a.userVo.fullname}"></td>
+                            <td class="am-hide-sm-only" th:text="${dateUtil.dateFormat(a.addTime, 'yyyy-MM-dd')}"></td>
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span
-                                                class="am-icon-pencil-square-o"></span> 编辑
-                                        </button>
-                                        <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span
-                                                class="am-icon-copy"></span> 复制
-                                        </button>
-                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only">
-                                            <span class="am-icon-trash-o"></span> 删除
-                                        </button>
+                                        <a th:href="@{'/admin/article/'+${a.id}}"
+                                           class="am-btn am-btn-default am-btn-xs am-text-secondary"><i
+                                                class="am-icon-pencil-square-o"></i> <span>编辑</span></a>
+                                        <a class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><i
+                                                class="am-icon-trash-o"></i> <span>编辑</span></a>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         </tbody>
                     </table>
-                    <div class="am-cf">
-                        共 15 条记录
-                        <div class="am-fr">
-                            <ul class="am-pagination">
-                                <li class="am-disabled"><a href="#">«</a></li>
-                                <li class="am-active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">»</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <div th:replace="comm/macros :: pageAdminNav(${articles})"></div>
                     <hr/>
                 </form>
             </div>

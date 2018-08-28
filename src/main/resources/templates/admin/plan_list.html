@@ -29,14 +29,6 @@
                     </div>
                 </div>
             </div>
-            <div class="am-u-sm-12 am-u-md-3">
-                <div class="am-input-group am-input-group-sm">
-                    <input type="text" class="am-form-field">
-                    <span class="am-input-group-btn">
-            <button class="am-btn am-btn-default" type="button" onclick="search()">搜索</button>
-          </span>
-                </div>
-            </div>
         </div>
 
         <div class="am-g">
@@ -54,10 +46,10 @@
                             <th class="table-set">操作</th>
                         </tr>
                         </thead>
-                        <tbody th:each="plan:${plans.list}">
+                        <tbody th:each="plan,planStat:${plans.list}">
                         <tr>
                             <td><input type="checkbox"/><input type="hidden" th:value="${plan.id}"/></td>
-                            <td></td>
+                            <td th:text="${planStat.index + 1}"></td>
                             <td><a href="#" th:text="${plan.title}"></a></td>
                             <td class="am-hide-sm-only"
                                 th:text="${dateUtil.dateFormat(plan.startTime, 'yyyy-MM-dd')}"></td>
