@@ -36,8 +36,8 @@
             <th:block th:each="g:${gallery.list}">
                 <li>
                     <a href="#">
-                        <img class="am-img-thumbnail am-img-bdrs"
-                             th:src="${g.photo}" style="width: 190px;height: 190px"/>
+                        <img class="am-img-radius am-img-thumbnail"
+                             th:src="${g.photo}" style="max-width: 200px;height: auto;" />
                         <div class="gallery-desc" th:text="${dateUtil.dateFormat(g.addTime, 'yyyy-MM-dd HH:mm')}"></div>
                     </a>
                     <button class="am-btn am-btn-warning am-btn-xs" th:onclick="'delGallery('+${g.id}+')'">删除</button>
