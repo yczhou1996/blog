@@ -54,7 +54,7 @@
                                         <a th:href="@{'/admin/article/'+${a.id}}"
                                            class="am-btn am-btn-default am-btn-xs am-text-secondary"><i
                                                 class="am-icon-pencil-square-o"></i> <span>编辑</span></a>
-                                        <a class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><i
+                                        <a th:onclick="'delArticle('+${a.id}+');'" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><i
                                                 class="am-icon-trash-o"></i> <span>编辑</span></a>
                                     </div>
                                 </div>

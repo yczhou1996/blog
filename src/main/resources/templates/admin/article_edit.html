@@ -71,10 +71,9 @@
         <div class="am-tabs am-margin">
             <div class="am-tab-panel am-fade am-in am-active" id="tab1">
                 <form class="am-form" id="articleForm">
-                    <input type="hidden" id="content" name="content"
-                           th:value="${article!=null and article.id!=null} ? ${article.id} : ''">
+                    <input type="hidden" id="id" name="id" th:value="${article!=null and article.id!=null} ? ${article.id} : ''">
+                    <input type="hidden" id="content" name="content">
                     <input type="hidden" id="categoryIds" name="categoryIds">
-                    <input type="hidden" id="categories" name="categories">
                     <div class="am-g am-margin-top">
                         <div class="am-u-sm-4 am-u-md-2 am-text-right">
                             文章标题
@@ -101,7 +100,7 @@
                             <select multiple data-am-selected id="select-category">
                                 <th:block th:each="c : ${categories}">
                                     <option th:value="${c.id}" th:text="${c.name}"
-                                            th:selected="${article!=null and common.exists_cate(article.categories, c.id)}?true:false">
+                                            th:selected="${article!=null and common.exists_cate(article.categories, c.name)}?true:false">
                                     </option>
                                 </th:block>
                             </select>

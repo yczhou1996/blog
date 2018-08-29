@@ -32,7 +32,6 @@ chou.prototype.showConfirm = function (msg, then) {
         cancelButtonText:  '取消',
         showCancelButton: true,
     }).then( function (e) {
-        debugger;
         then(e);
     }).catch(swal.noop);
 };

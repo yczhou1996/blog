@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -70,16 +71,15 @@ public class ArticleServiceImpl implements IArticleService {
         if (StringUtils.isBlank(articleVo.getCategoryIds())) {
             return "文章分类不能为空";
         }
-        if (StringUtils.isBlank(articleVo.getCategories())) {
-            return "文章分类不能为空";
+        if(null == articleVo.getAuthorId()){
+            return "请登录后操作";
         }
         String[] categories = articleVo.getCategoryIds().split(",");
-        String categoryNames = "";
+        List<String> categoryNames = new ArrayList<>();
         for (String categoryId : categories) {
-            categoryNames += categoryVoDao.selectByPrimaryKey(Integer.valueOf(categoryId)).getName() + ",";
+            categoryNames.add(categoryVoDao.selectByPrimaryKey(Integer.valueOf(categoryId)).getName());
         }
-        //todo
-        articleVo.setCategories(articleVo.getCategories().trim());
+        articleVo.setCategories(String.join(",", categoryNames));
         if (null == articleVo.getId()) {
             articleVo.setAddTime(new Date());
             insert(articleVo);
@@ -87,6 +87,7 @@ public class ArticleServiceImpl implements IArticleService {
             articleVo.setUpdateTime(new Date());
             update(articleVo);
         }
+        //保存分类
         relationshipVoDao.deleteById(articleVo.getId());
         for (String cid : categories) {
             relationshipVoDao.insertSelective(new RelationshipVoKey(articleVo.getId(), Integer.valueOf(cid)));

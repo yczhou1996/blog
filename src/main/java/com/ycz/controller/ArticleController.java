@@ -7,6 +7,7 @@ import com.ycz.model.Vo.ArticleVo;
 import com.ycz.model.Vo.CategoryVo;
 import com.ycz.service.IArticleService;
 import com.ycz.service.ICategoryService;
+import com.ycz.utils.CommonsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -51,10 +52,20 @@ public class ArticleController {
 
     @PostMapping( value = "/publish" )
     @ResponseBody
-    public RestResponseBo publishArticle(ArticleVo articleVo) {
+    public RestResponseBo publishArticle(ArticleVo articleVo, HttpServletRequest request) {
+        articleVo.setAuthorId(CommonsUtil.getLoginUser(request).getId());
         String result = articleService.publish(articleVo);
         if (!WebConst.SUCCESS_RESULT.equals(result)) {
             return RestResponseBo.fail(result);
+        }
+        return RestResponseBo.ok();
+    }
+
+    @PostMapping(value = "/delete")
+    @ResponseBody
+    public RestResponseBo deleteArticle(Integer id){
+        if(null == articleService.delete(id)){
+            return RestResponseBo.fail("删除失败");
         }
         return RestResponseBo.ok();
     }

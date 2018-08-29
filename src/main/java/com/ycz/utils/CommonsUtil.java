@@ -84,10 +84,17 @@ public class CommonsUtil {
         return color[rand];
     }
 
-    public static boolean exists_cate(String categories, Integer categoryId){
+    /**
+     * 判断是否存在
+     * @param categories
+     * @param categoryName
+     * @return
+     */
+    public static boolean exists_cate(String categories, String categoryName){
+        if(StringUtils.isBlank(categories) || StringUtils.isBlank(categoryName)) return false;
         String[] arr = categories.split(",");
         for(String category : arr){
-            if(category.trim().equals(categoryId.toString())){
+            if(category.trim().equals(categoryName)){
                 return true;
             }
         }
