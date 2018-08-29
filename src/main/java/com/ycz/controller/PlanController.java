@@ -5,7 +5,9 @@ import com.ycz.constant.WebConst;
 import com.ycz.exception.TipException;
 import com.ycz.model.Bo.RestResponseBo;
 import com.ycz.model.Vo.PlanVo;
+import com.ycz.model.Vo.UserVo;
 import com.ycz.service.IPlanService;
+import com.ycz.utils.CommonsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -35,7 +37,9 @@ public class PlanController {
 
     @PostMapping(value = "/edit")
     @ResponseBody
-    public RestResponseBo editPlan(PlanVo planVo){
+    public RestResponseBo editPlan(PlanVo planVo, HttpServletRequest request){
+        UserVo userVo = CommonsUtil.getLoginUser(request);
+        planVo.setAuthorId(userVo.getId());
         String result = planService.saveOrUpdate(planVo);
         if(WebConst.SUCCESS_RESULT != result){
             return RestResponseBo.fail(result);

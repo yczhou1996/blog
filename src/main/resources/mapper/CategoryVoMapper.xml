@@ -9,6 +9,16 @@
   <sql id="Base_Column_List" >
     id, name
   </sql>
+  <select id="existsCategory" resultType="java.lang.Integer">
+    select count(*)
+    from t_category
+    where name = #{name,jdbcType=VARCHAR}
+    <trim prefix="" suffix="" suffixOverrides="," >
+      <if test="id != null" >
+        and <![CDATA[id <> #{id,jdbcType=INTEGER} ]]> ,
+      </if>
+    </trim>
+  </select>
   <select id="selectCategory" resultMap="BaseResultMap" parameterType="java.lang.Integer">
     select id ,name,(select count(*) from t_relationships where cid = id) count from t_category
   </select>

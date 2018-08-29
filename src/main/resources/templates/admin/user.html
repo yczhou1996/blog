@@ -27,11 +27,15 @@
                                      alt="" id="imgHead"/>
                             </div>
                             <div class="am-u-md-8">
-                                <p>你可以使用<a href="#">gravatar.com</a>提供的头像或者使用本地上传头像。 </p>
+                                <p>你可以使用本地上传头像。 </p>
                                 <form class="am-form" id="fileForm">
                                     <div class="am-form-group">
-                                        <input type="file" id="user-pic" name="file">
-                                        <p class="am-form-help">请选择要上传的文件...</p>
+                                        <div class="am-form-group am-form-file">
+                                            <button type="button" class="am-btn am-btn-default  am-btn-sm">
+                                                <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+                                            <input id="user-pic" type="file" name="file">
+                                        </div>
+                                        <div id="file-list"></div>
                                         <button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="savePhoto()">保存</button>
                                     </div>
                                 </form>
@@ -100,11 +104,7 @@
         </div>
     </div>
 
-    <footer class="admin-content-footer">
-        <hr>
-        <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
-    </footer>
-
+    <div th:replace="comm/footer::htmlfooter"></div>
 </div>
 <!-- content end -->
 <script th:src="@{/js/user.js}" ></script>

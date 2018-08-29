@@ -43,4 +43,10 @@ public interface ICategoryService {
     List<CategoryVo> selectCategory();
 
 
+    /**
+     * 添加或修改
+     * @param categoryVo
+     * @return
+     */
+    String saveOrUpdate(CategoryVo categoryVo);
 }

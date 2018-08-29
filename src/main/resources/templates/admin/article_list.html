@@ -55,7 +55,7 @@
                                            class="am-btn am-btn-default am-btn-xs am-text-secondary"><i
                                                 class="am-icon-pencil-square-o"></i> <span>编辑</span></a>
                                         <a th:onclick="'delArticle('+${a.id}+');'" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><i
-                                                class="am-icon-trash-o"></i> <span>编辑</span></a>
+                                                class="am-icon-trash-o"></i> <span>删除</span></a>
                                     </div>
                                 </div>
                             </td>
@@ -70,12 +70,32 @@
         </div>
     </div>
 
-    <footer class="admin-content-footer">
-        <hr>
-        <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
-    </footer>
-
+    <div th:replace="comm/footer::htmlfooter"></div>
 </div>
+<script>
+    var chou = new chou();
+    function delArticle(id) {
+        chou.showConfirm("确认要删除吗？", function () {
+            $.ajax({
+                type: "POST",
+                url: "/admin/article/delete",
+                data: {id: id},
+                dataType: "JSON",
+                async: false,
+                success: function (result) {
+                    if (result && result.success) {
+                        chou.showOk("删除成功");
+                        setTimeout(function () {
+                            window.location.href = "/admin/article/list"
+                        }, 1000)
+                    } else {
+                        chou.showError(result.msg);
+                    }
+                }
+            })
+        })
+    }
+</script>
 <!-- content end -->
 </body>
 </html>

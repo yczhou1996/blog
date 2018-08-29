@@ -1,6 +1,7 @@
 package com.ycz.dao;
 
 import com.ycz.model.Vo.CategoryVo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -20,4 +21,6 @@ public interface CategoryVoMapper {
     int updateByPrimaryKey(CategoryVo record);
 
     List<CategoryVo> selectCategory();
+
+    int existsCategory(@Param("id") Integer id, @Param("name") String name);
 }

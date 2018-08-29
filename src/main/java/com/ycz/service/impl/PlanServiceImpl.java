@@ -78,6 +78,9 @@ public class PlanServiceImpl implements IPlanService {
             return "开始日期应小于结束日期";
         }
         if(null == planVo.getId()){
+            return "请登录后操作";
+        }
+        if(null == planVo.getId()){
             insert(planVo);
         }else{
             update(planVo);

@@ -41,19 +41,21 @@ public class ArticleServiceImpl implements IArticleService {
     }
 
     @Override
-    public ArticleVo queryById(Integer Id) {
-        if (null == Id) {
+    public ArticleVo queryById(Integer id) {
+        if (null == id) {
             return null;
         }
-        return articleVoDao.selectByPrimaryKey(Id);
+        return articleVoDao.selectByPrimaryKey(id);
     }
 
     @Override
-    public Integer delete(Integer Id) {
-        if (null == Id) {
+    @Transactional
+    public Integer delete(Integer id) {
+        if (null == id) {
             return null;
         }
-        return articleVoDao.deleteByPrimaryKey(Id);
+        relationshipVoDao.deleteById(id);
+        return articleVoDao.deleteByPrimaryKey(id);
     }
 
     @Override

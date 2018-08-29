@@ -44,6 +44,7 @@ public class GalleryController {
         for (MultipartFile multipartFile : multipartFiles) {
             String fname = multipartFile.getOriginalFilename();
             String suffix = fname.substring(fname.lastIndexOf(".") + 1);
+            //图片是否过大或者不为图片
             if (multipartFile.getSize() <= WebConst.MAX_FILE_SIZE
                     || (!"jpg".equals(suffix) && !"png".equals(suffix))) {
                 String fkey = FileUploadUtil.getFileKey(fname);

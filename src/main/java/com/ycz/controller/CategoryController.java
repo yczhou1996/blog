@@ -1,6 +1,6 @@
 package com.ycz.controller;
 
-import com.ycz.exception.TipException;
+import com.ycz.constant.WebConst;
 import com.ycz.model.Bo.RestResponseBo;
 import com.ycz.model.Vo.CategoryVo;
 import com.ycz.service.ICategoryService;
@@ -29,15 +29,9 @@ public class CategoryController {
     @ResponseBody
     public RestResponseBo editCategory(@RequestParam Integer id, @RequestParam String name){
         CategoryVo categoryVo = new CategoryVo(id, name);
-        try{
-            if(null == id){
-                categoryService.insert(categoryVo);
-            }else{
-                categoryService.update(categoryVo);
-            }
-        }catch (TipException e){
-            String msg = e.getMessage();
-            return RestResponseBo.fail(msg);
+        String result = categoryService.saveOrUpdate(categoryVo);
+        if(result != WebConst.SUCCESS_RESULT){
+            return RestResponseBo.fail(result);
         }
         return RestResponseBo.ok();
     }
