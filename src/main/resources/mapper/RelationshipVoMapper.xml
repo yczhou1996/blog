@@ -5,6 +5,11 @@
     <id column="aid" property="aid" jdbcType="INTEGER" />
     <id column="cid" property="cid" jdbcType="INTEGER" />
   </resultMap>
+  <select id="countByCid" resultType="java.lang.Integer">
+    select count(*)
+    from t_relationships
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
   <delete id="deleteById" parameterType="java.lang.Integer">
     delete from t_relationships
     where aid = #{aid,jdbcType=INTEGER}

@@ -24,16 +24,16 @@ public interface ICategoryService {
 
     /**
      * 根据Id查找对象
-     * @param Id
+     * @param id
      * @return
      */
-    CategoryVo queryById(Integer Id);
+    CategoryVo queryById(Integer id);
 
 
     /**
      * 删除对象
      */
-    Integer delete(Integer Id);
+    Integer delete(Integer id);
 
 
     /**

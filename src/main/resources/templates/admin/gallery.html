@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: htmlhead">
+    <meta charset="UTF-8">
+    <title>gallery</title>
+</head>
+<body>
+<!-- content start -->
+<div class="admin-content">
+
+    <div class="admin-content-body">
+        <div class="am-cf am-padding am-padding-bottom-0">
+            <div class="am-fl am-cf">
+                <strong class="am-text-primary am-text-lg">相册</strong> /
+                <small>Gallery</small>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="am-g">
+            <div class="am-u-sm-12 am-u-md-6">
+                <div class="am-form-group am-form-file">
+                    <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                        <i class="am-icon-cloud-upload"></i> 选择要上传的文件
+                    </button>
+                    <form id="fileForm">
+                        <input id="doc-form-file" type="file" name="file" multiple>
+                    </form>
+                </div>
+                <div id="file-list"></div>
+            </div>
+        </div>
+
+        <ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
+            <th:block th:each="g:${gallery.list}">
+                <li>
+                    <a href="#">
+                        <img class="am-img-thumbnail am-img-bdrs"
+                             th:src="${g.photo}" style="width: 190px;height: 190px"/>
+                        <div class="gallery-desc" th:text="${dateUtil.dateFormat(g.addTime, 'yyyy-MM-dd HH:mm')}"></div>
+                    </a>
+                    <button class="am-btn am-btn-warning am-btn-xs" th:onclick="'delGallery('+${g.id}+')'">删除</button>
+                </li>
+            </th:block>
+        </ul>
+
+        <div th:replace="comm/macros :: pageAdminNav(${gallery})"></div>
+    </div>
+
+    <footer class="admin-content-footer">
+        <hr>
+        <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+    </footer>
+
+</div>
+<script>
+    var chou = new chou();
+    $(function () {
+        $("#doc-form-file").change(function () {
+            $.ajax({
+                type: "POST",
+                url: "/admin/gallery/upload",
+                data: new FormData($('#fileForm')[0]),
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    if (result && result.success && result.payload.length > 0) {
+                        chou.showError("上传失败");
+                    } else if (result && result.success && result.payload.length == 0) {
+                        chou.showOk("上传成功");
+                    }
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1000);
+                }
+            })
+        })
+    });
+
+    function delGallery(id) {
+        chou.showConfirm("确认要删除吗？", function () {
+            $.ajax({
+                type: "POST",
+                url: "/admin/gallery/delete",
+                data: {id: id},
+                dataType: "JSON",
+                success: function (result) {
+                    if (result && result.success) {
+                        chou.showOk("删除成功");
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1000);
+                    } else {
+                        chou.showError("删除失败");
+                    }
+                }
+            })
+        })
+    }
+</script>
+<!-- content end -->
+</body>
+</html>

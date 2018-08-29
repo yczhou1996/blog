@@ -2,6 +2,7 @@ package com.ycz.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.ycz.constant.WebConst;
+import com.ycz.exception.TipException;
 import com.ycz.model.Bo.RestResponseBo;
 import com.ycz.model.Vo.PlanVo;
 import com.ycz.service.IPlanService;
@@ -55,11 +56,16 @@ public class PlanController {
     @PostMapping(value = "/delete")
     @ResponseBody
     public RestResponseBo delPlan(Integer id){
-        Integer result = planService.delete(id);
-        if(null != result){
-            return RestResponseBo.ok();
+        try{
+            planService.delete(id);
+        }catch (Exception e){
+            String msg = "删除失败";
+            if(e instanceof TipException){
+                msg = e.getMessage();
+            }
+            return RestResponseBo.fail(msg);
         }
-        return RestResponseBo.fail();
+        return RestResponseBo.ok();
     }
 
     @InitBinder

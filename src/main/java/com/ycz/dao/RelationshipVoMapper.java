@@ -12,4 +12,6 @@ public interface RelationshipVoMapper {
     int insertSelective(RelationshipVoKey record);
 
     int deleteById(Integer aid);
+
+    int countByCid(Integer cid);
 }

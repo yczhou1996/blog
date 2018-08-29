@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.ycz.constant.WebConst;
 import com.ycz.dao.PlanVoMapper;
+import com.ycz.dao.RelationshipVoMapper;
+import com.ycz.exception.TipException;
 import com.ycz.model.Vo.PlanVo;
 import com.ycz.service.IPlanService;
 import org.apache.commons.lang3.StringUtils;
@@ -17,6 +19,9 @@ public class PlanServiceImpl implements IPlanService {
 
     @Autowired
     private PlanVoMapper planVoDao;
+
+    @Autowired
+    private RelationshipVoMapper relationshipVoDao;
 
     @Override
     public Integer insert(PlanVo planVo) {
@@ -38,11 +43,14 @@ public class PlanServiceImpl implements IPlanService {
 
     @Override
     public Integer delete(Integer Id) {
-        if(null != Id){
-            return planVoDao.deleteByPrimaryKey(Id);
+        if(null == Id){
+            throw new TipException("系统错误");
         }
-        
-        return null;
+        int count = relationshipVoDao.countByCid(Id);
+        if(count > 0){
+            throw new TipException("分类下有文章");
+        }
+        return planVoDao.deleteByPrimaryKey(Id);
     }
 
     @Override

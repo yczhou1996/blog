@@ -22,15 +22,15 @@ public interface IPlanService {
 
     /**
      * 根据Id查找对象
-     * @param Id
+     * @param id
      * @return
      */
-    PlanVo queryById(Integer Id);
+    PlanVo queryById(Integer id);
 
     /**
      * 删除对象
      */
-    Integer delete(Integer Id);
+    Integer delete(Integer id);
 
     /**
      * 分页计划列表

@@ -23,10 +23,10 @@ public interface IArticleService {
 
     /**
      * 根据Id查找对象
-     * @param Id
+     * @param id
      * @return
      */
-    ArticleVo queryById(Integer Id);
+    ArticleVo queryById(Integer id);
 
 
     /**

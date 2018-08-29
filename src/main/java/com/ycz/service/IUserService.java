@@ -22,10 +22,10 @@ public interface IUserService {
 
     /**
      * 根据Id查找对象
-     * @param Id
+     * @param id
      * @return
      */
-    UserVo queryById(Integer Id);
+    UserVo queryById(Integer id);
 
 
     /**
