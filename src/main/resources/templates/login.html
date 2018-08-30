@@ -11,7 +11,6 @@
     <link rel="alternate icon" type="image/png" th:href="@{assets/i/favicon.png}"/>
     <link rel="stylesheet" th:href="@{/assets/css/amazeui.min.css}"/>
     <link rel="stylesheet" th:href="@{/assets/css/admin.css}">
-    <script th:src="@{/js/base.js}"></script>
     <script th:src="@{//cdn.bootcss.com/jquery/2.2.3/jquery.min.js}"></script>
     <link th:href="@{//cdn.bootcss.com/limonte-sweetalert2/6.4.1/sweetalert2.min.css}" rel="stylesheet"/>
     <script th:src="@{//cdn.bootcss.com/limonte-sweetalert2/6.4.1/sweetalert2.min.js}"></script>
@@ -71,14 +70,16 @@
             </div>
         </form>
         <hr>
-        <p>© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+        <p>© 2018 JoJo's Bizarre Adventure.</p>
     </div>
 </div>
+<script th:src="@{/js/base.js}"></script>
 <script>
+    var chou = new chou();
     $(function () {
-       if(window != top){
-           top.location.href = location.href;
-       }
+        if (window != top) {
+            top.location.href = location.href;
+        }
     });
     function login() {
         $.ajax({
@@ -87,8 +88,10 @@
             data: $("#loginForm").serialize(),
             dataType: "JSON",
             success: function (result) {
-                if (result.success) {
+                if (result && result.success) {
                     window.location.href = "/index";
+                } else {
+                    chou.showError(result.msg);
                 }
             }
         })
