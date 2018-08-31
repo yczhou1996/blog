@@ -1,79 +1,82 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="layout :: htmlhead">
-    <meta charset="UTF-8">
-    <title>article</title>
+    <meta charset="utf-8">
+    <title>Amaze UI Admin index Examples</title>
 </head>
 <body>
-<!-- content start -->
-<div class="admin-content">
-    <div class="admin-content-body">
-        <div class="am-cf am-padding am-padding-bottom-0">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">文章列表</strong> /
-                <small>article</small>
-            </div>
-        </div>
-        <hr>
-        <div class="am-g">
-            <div class="am-u-sm-12 am-u-md-6">
-                <div class="am-btn-toolbar">
-                    <div class="am-btn-group am-btn-group-xs">
-                        <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增
-                        </button>
+<script th:src="@{/assets/js/theme.js}"></script>
+<div class="tpl-content-wrapper">
+    <div class="row-content am-cf">
+        <div class="row">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title  am-cf">文章列表</div>
+
+
+                    </div>
+                    <div class="widget-body  am-fr">
+
+                        <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+                            <div class="am-form-group">
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <button type="button" class="am-btn am-btn-default am-btn-success"><span
+                                                class="am-icon-plus"></span> 新增
+                                        </button>
+                                        <button type="button" class="am-btn am-btn-default am-btn-danger"><span
+                                                class="am-icon-trash-o"></span> 删除
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-u-sm-12">
+                            <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black "
+                                   id="example-r">
+                                <thead>
+                                <tr>
+                                    <th>文章标题</th>
+                                    <th>作者</th>
+                                    <th>时间</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody th:each="a,astat:${articles.list}">
+                                <tr class="gradeX">
+                                    <td><a href="#" th:text="${a.title}"></a></td>
+                                    <td th:text="${a.userVo.fullname}"></td>
+                                    <td th:text="${dateUtil.dateFormat(a.addTime, 'yyyy-MM-dd')}"></td>
+                                    <td>
+                                        <div class="tpl-table-black-operation">
+                                            <a th:href="@{'/admin/article/'+${a.id}}">
+                                                <i class="am-icon-pencil"></i> 编辑
+                                            </a>
+                                            <a th:onclick="'delArticle('+${a.id}+');'" class="tpl-table-black-operation-del">
+                                                <i class="am-icon-trash"></i> 删除
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- more data -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div th:replace="comm/macros :: pageAdminNav(${articles})"></div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="am-g">
-            <div class="am-u-sm-12">
-                <form class="am-form">
-                    <table class="am-table am-table-striped am-table-hover table-main">
-                        <thead>
-                        <tr>
-                            <th class="table-check"><input type="checkbox"/></th>
-                            <th class="table-id">ID</th>
-                            <th class="table-title">标题</th>
-                            <th class="table-author am-hide-sm-only">作者</th>
-                            <th class="table-date am-hide-sm-only">发布日期</th>
-                            <th class="table-category">类别</th>
-                            <th class="table-set">操作</th>
-                        </tr>
-                        </thead>
-                        <tbody th:each="a,astat:${articles.list}">
-                        <tr>
-                            <td><input type="checkbox"/><input type="hidden" th:value="${a.id}"/></td>
-                            <td th:text="${astat.index + 1}"></td>
-                            <td><a href="#" th:text="${a.title}"></a></td>
-                            <td class="am-hide-sm-only" th:text="${a.userVo.fullname}"></td>
-                            <td class="am-hide-sm-only" th:text="${dateUtil.dateFormat(a.addTime, 'yyyy-MM-dd')}"></td>
-                            <td class="am-hide-sm-only" th:text="${a.categories}"></td>
-                            <td>
-                                <div class="am-btn-toolbar">
-                                    <div class="am-btn-group am-btn-group-xs">
-                                        <a th:href="@{'/admin/article/'+${a.id}}"
-                                           class="am-btn am-btn-default am-btn-xs am-text-secondary"><i
-                                                class="am-icon-pencil-square-o"></i> <span>编辑</span></a>
-                                        <a th:onclick="'delArticle('+${a.id}+');'" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><i
-                                                class="am-icon-trash-o"></i> <span>删除</span></a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div th:replace="comm/macros :: pageAdminNav(${articles})"></div>
-                    <hr/>
-                </form>
-            </div>
-
-        </div>
     </div>
-
-    <div th:replace="comm/footer::htmlfooter"></div>
 </div>
+<script th:src="@{/assets/js/amazeui.min.js}"></script>
+<script th:src="@{/assets/js/amazeui.datatables.min.js}"></script>
+<script th:src="@{/assets/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{/assets/js/app.js}"></script>
 <script>
     var chou = new chou();
+
     function delArticle(id) {
         chou.showConfirm("确认要删除吗？", function () {
             $.ajax({
@@ -96,6 +99,5 @@
         })
     }
 </script>
-<!-- content end -->
 </body>
 </html>

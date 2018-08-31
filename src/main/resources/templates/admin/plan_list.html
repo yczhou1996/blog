@@ -5,82 +5,80 @@
     <title>plan</title>
 </head>
 <body>
+<script th:src="@{/assets/js/theme.js}"></script>
 <!-- content start -->
-<div class="admin-content">
-    <div class="admin-content-body">
-        <div class="am-cf am-padding am-padding-bottom-0">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">计划列表</strong> /
-                <small>plan</small>
-            </div>
-        </div>
+<div class="tpl-content-wrapper">
+    <div class="row-content am-cf">
+        <div class="row">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title  am-cf">文章列表</div>
 
-        <hr>
 
-        <div class="am-g">
-            <div class="am-u-sm-12 am-u-md-6">
-                <div class="am-btn-toolbar">
-                    <div class="am-btn-group am-btn-group-xs">
-                        <button type="button" class="am-btn am-btn-default" onclick="modifyPlan()">
-                            <span class="am-icon-plus"></span> 新增
-                        </button>
+                    </div>
+                    <div class="widget-body  am-fr">
+
+                        <div class="am-u-sm-12 am-u-md-6 am-u-lg-6">
+                            <div class="am-form-group">
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <button type="button" class="am-btn am-btn-default am-btn-success" onclick="modifyPlan()"><span
+                                                class="am-icon-plus"></span> 新增
+                                        </button>
+                                        <button type="button" class="am-btn am-btn-default am-btn-danger"><span
+                                                class="am-icon-trash-o"></span> 删除
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-u-sm-12">
+                            <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black "
+                                   id="example-r">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>标题</th>
+                                    <th>开始日期</th>
+                                    <th>到期日期</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody th:each="plan,planStat:${plans.list}">
+                                <tr class="gradeX">
+                                    <input type="hidden" th:value="${plan.id}"/>
+                                    <td th:text="${planStat.index + 1}"></td>
+                                    <td><a href="#" th:text="${plan.title}"></a></td>
+                                    <td th:text="${dateUtil.dateFormat(plan.startTime, 'yyyy-MM-dd')}"></td>
+                                    <td th:text="${dateUtil.dateFormat(plan.endTime, 'yyyy-MM-dd')}"></td>
+
+                                    <td th:if="${plan.startTime} lt ${new java.util.Date()} and ${plan.endTime} gt ${new java.util.Date()} ">进行中</td>
+                                    <td th:if="${plan.startTime} gt ${new java.util.Date()}  ">未开始</td>
+                                    <td th:if="${plan.endTime} lt ${new java.util.Date()}  ">已结束</td>
+
+                                    <td>
+                                        <div class="tpl-table-black-operation">
+                                            <a th:onclick="'modifyPlan('+${plan.id}+');'">
+                                                <i class="am-icon-pencil"></i> 编辑
+                                            </a>
+                                            <a th:onclick="'delPlans('+${plan.id}+')'" class="tpl-table-black-operation-del">
+                                                <i class="am-icon-trash"></i> 删除
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- more data -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div th:replace="comm/macros :: pageAdminNav(${plans})"></div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="am-g">
-            <div class="am-u-sm-12">
-                <form class="am-form">
-                    <table class="am-table am-table-striped am-table-hover table-main">
-                        <thead>
-                        <tr>
-                            <th class="table-check"><input type="checkbox"/></th>
-                            <th class="table-id">ID</th>
-                            <th class="table-title">标题</th>
-                            <th class="table-date am-hide-sm-only">开始日期</th>
-                            <th class="table-date am-hide-sm-only">到期日期</th>
-                            <th class="table-type">状态</th>
-                            <th class="table-set">操作</th>
-                        </tr>
-                        </thead>
-                        <tbody th:each="plan,planStat:${plans.list}">
-                        <tr>
-                            <td><input type="checkbox"/><input type="hidden" th:value="${plan.id}"/></td>
-                            <td th:text="${planStat.index + 1}"></td>
-                            <td><a href="#" th:text="${plan.title}"></a></td>
-                            <td class="am-hide-sm-only"
-                                th:text="${dateUtil.dateFormat(plan.startTime, 'yyyy-MM-dd')}"></td>
-                            <td class="am-hide-sm-only"
-                                th:text="${dateUtil.dateFormat(plan.endTime, 'yyyy-MM-dd')}"></td>
-                            <td th:if="${plan.startTime} lt ${new java.util.Date()} and ${plan.endTime} gt ${new java.util.Date()} ">进行中</td>
-                            <td th:if="${plan.startTime} gt ${new java.util.Date()}  ">未开始</td>
-                            <td th:if="${plan.endTime} lt ${new java.util.Date()}  ">已结束</td>
-                            <td>
-                                <div class="am-btn-toolbar">
-                                    <div class="am-btn-group am-btn-group-xs">
-                                        <button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary"
-                                                th:onclick="'modifyPlan('+${plan.id}+');'">
-                                            <span class="am-icon-pencil-square-o"></span> 编辑
-                                        </button>
-                                        <button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"
-                                                th:onclick="'delPlans('+${plan.id}+')'">
-                                            <span class="am-icon-trash-o"></span> 删除
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div th:replace="comm/macros :: pageAdminNav(${plans})"></div>
-                    <hr/>
-                </form>
-            </div>
-
-        </div>
     </div>
-
-    <div th:replace="comm/footer::htmlfooter"></div>
 </div>
 <div class="am-popup" id="addPlan">
     <div class="am-popup-inner">
@@ -129,6 +127,10 @@
         </div>
     </div>
 </div>
+<script th:src="@{/assets/js/amazeui.min.js}"></script>
+<script th:src="@{/assets/js/amazeui.datatables.min.js}"></script>
+<script th:src="@{/assets/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{/assets/js/app.js}"></script>
 <script th:src="@{/js/plan.js}"></script>
 <!-- content end -->
 </body>

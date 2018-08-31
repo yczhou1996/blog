@@ -27,7 +27,7 @@ chou.prototype.showConfirm = function (msg, then) {
         title: msg,
         text: "",
         type: "question",
-        timer: 5000,
+        timer: 99999,
         confirmButtonText: "确定",
         cancelButtonText:  '取消',
         showCancelButton: true,

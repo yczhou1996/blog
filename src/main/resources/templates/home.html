@@ -1,316 +1,280 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="layout :: htmlhead">
+<head>
     <title>home</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" th:href="@{assets/i/favicon.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{assets/i/app-icon72x72@2x.png}">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" th:href="@{/assets/css/amazeui.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/amazeui.datatables.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/app.css}">
+    <script th:src="@{/assets/js/jquery.min.js}"></script>
 </head>
-<body>
-<!-- content start -->
-<div class="admin-content">
-    <div class="admin-content-body">
-        <div class="am-cf am-padding">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> /
-                <small>一些常用模块</small>
+<body data-type="index">
+<script src="assets/js/theme.js"></script>
+<div class="tpl-content-wrapper">
+
+    <div class="container-fluid am-cf">
+        <div class="row">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-9">
+                <div class="page-header-heading"><span class="am-icon-home page-header-heading-icon"></span> 部件首页
+                    <small>Amaze UI</small>
+                </div>
+                <p class="page-header-description">Amaze UI 含近 20 个 CSS 组件、20 余 JS 组件，更有多个包含不同主题的 Web 组件。</p>
+            </div>
+            <div class="am-u-lg-3 tpl-index-settings-button">
+                <button type="button" class="page-header-button"><span class="am-icon-paint-brush"></span> 设置</button>
             </div>
         </div>
 
-        <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
-            <li><a href="#" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>新增页面<br/>2300</a>
-            </li>
-            <li><a href="#" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>成交订单<br/>308</a>
-            </li>
-            <li><a href="#" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>昨日访问<br/>80082</a>
-            </li>
-            <li><a href="#" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>在线用户<br/>3000</a>
-            </li>
-        </ul>
+    </div>
 
-        <div class="am-g">
-            <div class="am-u-sm-12">
-                <table class="am-table am-table-bd am-table-striped admin-content-table">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>用户名</th>
-                        <th>最后成交任务</th>
-                        <th>成交订单</th>
-                        <th>管理</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>John Clark</td>
-                        <td><a href="#">Business management</a></td>
-                        <td><span class="am-badge am-badge-success">+20</span></td>
-                        <td>
-                            <div class="am-dropdown" data-am-dropdown>
-                                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle"
-                                        data-am-dropdown-toggle><span class="am-icon-cog"></span> <span
-                                        class="am-icon-caret-down"></span></button>
-                                <ul class="am-dropdown-content">
-                                    <li><a href="#">1. 编辑</a></li>
-                                    <li><a href="#">2. 下载</a></li>
-                                    <li><a href="#">3. 删除</a></li>
-                                </ul>
+    <div class="row-content am-cf">
+        <div class="row  am-cf">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-4">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title am-fl">月度财务收支计划</div>
+                        <div class="widget-function am-fr">
+                            <a href="javascript:;" class="am-icon-cog"></a>
+                        </div>
+                    </div>
+                    <div class="widget-body am-fr">
+                        <div class="am-fl">
+                            <div class="widget-fluctuation-period-text">
+                                ￥61746.45
+                                <button class="widget-fluctuation-tpl-btn">
+                                    <i class="am-icon-calendar"></i>
+                                    更多月份
+                                </button>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>风清扬</td>
-                        <td><a href="#">公司LOGO设计</a></td>
-                        <td><span class="am-badge am-badge-danger">+2</span></td>
-                        <td>
-                            <div class="am-dropdown" data-am-dropdown>
-                                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle"
-                                        data-am-dropdown-toggle><span class="am-icon-cog"></span> <span
-                                        class="am-icon-caret-down"></span></button>
-                                <ul class="am-dropdown-content">
-                                    <li><a href="#">1. 编辑</a></li>
-                                    <li><a href="#">2. 下载</a></li>
-                                    <li><a href="#">3. 删除</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>詹姆斯</td>
-                        <td><a href="#">开发一款业务数据软件</a></td>
-                        <td><span class="am-badge am-badge-warning">+10</span></td>
-                        <td>
-                            <div class="am-dropdown" data-am-dropdown>
-                                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle"
-                                        data-am-dropdown-toggle><span class="am-icon-cog"></span> <span
-                                        class="am-icon-caret-down"></span></button>
-                                <ul class="am-dropdown-content">
-                                    <li><a href="#">1. 编辑</a></li>
-                                    <li><a href="#">2. 下载</a></li>
-                                    <li><a href="#">3. 删除</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>云适配</td>
-                        <td><a href="#">适配所有网站</a></td>
-                        <td><span class="am-badge am-badge-secondary">+50</span></td>
-                        <td>
-                            <div class="am-dropdown" data-am-dropdown>
-                                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle"
-                                        data-am-dropdown-toggle><span class="am-icon-cog"></span> <span
-                                        class="am-icon-caret-down"></span></button>
-                                <ul class="am-dropdown-content">
-                                    <li><a href="#">1. 编辑</a></li>
-                                    <li><a href="#">2. 下载</a></li>
-                                    <li><a href="#">3. 删除</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                        </div>
+                        <div class="am-fr am-cf">
+                            <div class="widget-fluctuation-description-amount text-success" am-cf>
+                                +￥30420.56
 
-                    <tr>
-                        <td>5</td>
-                        <td>呵呵呵</td>
-                        <td><a href="#">基兰会获得BUFF</a></td>
-                        <td><span class="am-badge">+22</span></td>
-                        <td>
-                            <div class="am-dropdown" data-am-dropdown>
-                                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle"
-                                        data-am-dropdown-toggle><span class="am-icon-cog"></span> <span
-                                        class="am-icon-caret-down"></span></button>
-                                <ul class="am-dropdown-content">
-                                    <li><a href="#">1. 编辑</a></li>
-                                    <li><a href="#">2. 下载</a></li>
-                                    <li><a href="#">3. 删除</a></li>
-                                </ul>
                             </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                            <div class="widget-fluctuation-description-text am-text-right">
+                                8月份收入
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
+                <div class="widget widget-primary am-cf">
+                    <div class="widget-statistic-header">
+                        本季度利润
+                    </div>
+                    <div class="widget-statistic-body">
+                        <div class="widget-statistic-value">
+                            ￥27,294
+                        </div>
+                        <div class="widget-statistic-description">
+                            本季度比去年多收入 <strong>2593元</strong> 人民币
+                        </div>
+                        <span class="widget-statistic-icon am-icon-credit-card-alt"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
+                <div class="widget widget-purple am-cf">
+                    <div class="widget-statistic-header">
+                        本季度利润
+                    </div>
+                    <div class="widget-statistic-body">
+                        <div class="widget-statistic-value">
+                            ￥27,294
+                        </div>
+                        <div class="widget-statistic-description">
+                            本季度比去年多收入 <strong>2593元</strong> 人民币
+                        </div>
+                        <span class="widget-statistic-icon am-icon-support"></span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="am-g">
-            <div class="am-u-md-6">
-                <div class="am-panel am-panel-default">
-                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">文件上传<span
-                            class="am-icon-chevron-down am-fr"></span></div>
-                    <div class="am-panel-bd am-collapse am-in" id="collapse-panel-1">
-                        <ul class="am-list admin-content-file">
-                            <li>
-                                <strong><span class="am-icon-upload"></span> Kong-cetian.Mp3</strong>
-                                <p>3.3 of 5MB - 5 mins - 1MB/Sec</p>
-                                <div class="am-progress am-progress-striped am-progress-sm am-active">
-                                    <div class="am-progress-bar am-progress-bar-success" style="width: 82%">82%</div>
-                                </div>
-                            </li>
-                            <li>
-                                <strong><span class="am-icon-check"></span> 好人-cetian.Mp3</strong>
-                                <p>3.3 of 5MB - 5 mins - 3MB/Sec</p>
-                            </li>
-                            <li>
-                                <strong><span class="am-icon-check"></span> 其实都没有.Mp3</strong>
-                                <p>3.3 of 5MB - 5 mins - 3MB/Sec</p>
-                            </li>
-                        </ul>
+        <div class="row am-cf">
+            <div class="am-u-sm-12 am-u-md-8">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title am-fl">月度财务收支计划</div>
+                        <div class="widget-function am-fr">
+                            <a href="javascript:;" class="am-icon-cog"></a>
+                        </div>
                     </div>
-                </div>
-                <div class="am-panel am-panel-default">
-                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-2'}">浏览器统计<span
-                            class="am-icon-chevron-down am-fr"></span></div>
-                    <div id="collapse-panel-2" class="am-in">
-                        <table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover">
-                            <tbody>
-                            <tr>
-                                <th class="am-text-center">#</th>
-                                <th>浏览器</th>
-                                <th>访问量</th>
-                            </tr>
-                            <tr>
-                                <td class="am-text-center"><img src="assets/i/examples/admin-chrome.png" alt=""></td>
-                                <td>Google Chrome</td>
-                                <td>3,005</td>
-                            </tr>
-                            <tr>
-                                <td class="am-text-center"><img src="assets/i/examples/admin-firefox.png" alt=""></td>
-                                <td>Mozilla Firefox</td>
-                                <td>2,505</td>
-                            </tr>
-                            <tr>
-                                <td class="am-text-center"><img src="assets/i/examples/admin-ie.png" alt=""></td>
-                                <td>Internet Explorer</td>
-                                <td>1,405</td>
-                            </tr>
-                            <tr>
-                                <td class="am-text-center"><img src="assets/i/examples/admin-opera.png" alt=""></td>
-                                <td>Opera</td>
-                                <td>4,005</td>
-                            </tr>
-                            <tr>
-                                <td class="am-text-center"><img src="assets/i/examples/admin-safari.png" alt=""></td>
-                                <td>Safari</td>
-                                <td>505</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                    <div class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="tpl-echarts">
+
                     </div>
                 </div>
             </div>
 
-            <div class="am-u-md-6">
-                <div class="am-panel am-panel-default">
-                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-4'}">任务 task<span
-                            class="am-icon-chevron-down am-fr"></span></div>
-                    <div id="collapse-panel-4" class="am-panel-bd am-collapse am-in">
-                        <ul class="am-list admin-content-task">
-                            <li>
-                                <div class="admin-task-meta"> Posted on 25/1/2120 by John Clark</div>
-                                <div class="admin-task-bd">
-                                    The starting place for exploring business management; helping new managers get
-                                    started and experienced managers get better.
-                                </div>
-                                <div class="am-cf">
-                                    <div class="am-btn-toolbar am-fl">
-                                        <div class="am-btn-group am-btn-group-xs">
-                                            <button type="button" class="am-btn am-btn-default"><span
-                                                    class="am-icon-check"></span></button>
-                                            <button type="button" class="am-btn am-btn-default"><span
-                                                    class="am-icon-pencil"></span></button>
-                                            <button type="button" class="am-btn am-btn-default"><span
-                                                    class="am-icon-times"></span></button>
+            <div class="am-u-sm-12 am-u-md-4">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title am-fl">专用服务器负载</div>
+                        <div class="widget-function am-fr">
+                            <a href="javascript:;" class="am-icon-cog"></a>
+                        </div>
+                    </div>
+                    <div class="widget-body widget-body-md am-fr">
+
+                        <div class="am-progress-title">CPU Load <span
+                                class="am-fr am-progress-title-more">28% / 100%</span></div>
+                        <div class="am-progress">
+                            <div class="am-progress-bar" style="width: 15%"></div>
+                        </div>
+                        <div class="am-progress-title">CPU Load <span
+                                class="am-fr am-progress-title-more">28% / 100%</span></div>
+                        <div class="am-progress">
+                            <div class="am-progress-bar  am-progress-bar-warning" style="width: 75%"></div>
+                        </div>
+                        <div class="am-progress-title">CPU Load <span
+                                class="am-fr am-progress-title-more">28% / 100%</span></div>
+                        <div class="am-progress">
+                            <div class="am-progress-bar am-progress-bar-danger" style="width: 35%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row am-cf">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-4 widget-margin-bottom-lg ">
+                <div class="tpl-user-card am-text-center widget-body-lg">
+                    <div class="tpl-user-card-title">
+                        禁言小张
+                    </div>
+                    <div class="achievement-subheading">
+                        月度最佳员工
+                    </div>
+                    <img class="achievement-image" src="assets/img/user07.png" alt="">
+                    <div class="achievement-description">
+                        禁言小张在
+                        <strong>30天内</strong> 禁言了
+                        <strong>200多</strong>人。
+                    </div>
+                </div>
+            </div>
+
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-8 widget-margin-bottom-lg">
+
+                <div class="widget am-cf widget-body-lg">
+
+                    <div class="widget-body  am-fr">
+                        <div class="am-scrollable-horizontal ">
+                            <table width="100%" class="am-table am-table-compact am-text-nowrap tpl-table-black "
+                                   id="example-r">
+                                <thead>
+                                <tr>
+                                    <th>文章标题</th>
+                                    <th>作者</th>
+                                    <th>时间</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="gradeX">
+                                    <td>新加坡大数据初创公司 Latize 获 150 万美元风险融资</td>
+                                    <td>张鹏飞</td>
+                                    <td>2016-09-26</td>
+                                    <td>
+                                        <div class="tpl-table-black-operation">
+                                            <a href="javascript:;">
+                                                <i class="am-icon-pencil"></i> 编辑
+                                            </a>
+                                            <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <i class="am-icon-trash"></i> 删除
+                                            </a>
                                         </div>
-                                    </div>
-                                    <div class="am-fr">
-                                        <button type="button" class="am-btn am-btn-default am-btn-xs">删除</button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="admin-task-meta"> Posted on 25/1/2120 by 呵呵呵</div>
-                                <div class="admin-task-bd">
-                                    基兰和狗熊出现在不同阵营时。基兰会获得BUFF，“装甲熊憎恨者”。狗熊会获得BUFF，“时光老人憎恨者”。
-                                </div>
-                                <div class="am-cf">
-                                    <div class="am-btn-toolbar am-fl">
-                                        <div class="am-btn-group am-btn-group-xs">
-                                            <button type="button" class="am-btn am-btn-default"><span
-                                                    class="am-icon-check"></span></button>
-                                            <button type="button" class="am-btn am-btn-default"><span
-                                                    class="am-icon-pencil"></span></button>
-                                            <button type="button" class="am-btn am-btn-default"><span
-                                                    class="am-icon-times"></span></button>
+                                    </td>
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>自拍的“政治角色”：观众背对希拉里自拍合影表示“支持”</td>
+                                    <td>天纵之人</td>
+                                    <td>2016-09-26</td>
+                                    <td>
+                                        <div class="tpl-table-black-operation">
+                                            <a href="javascript:;">
+                                                <i class="am-icon-pencil"></i> 编辑
+                                            </a>
+                                            <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <i class="am-icon-trash"></i> 删除
+                                            </a>
                                         </div>
-                                    </div>
-                                    <div class="am-fr">
-                                        <button type="button" class="am-btn am-btn-default am-btn-xs">删除</button>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                                    </td>
+                                </tr>
+                                <tr class="gradeX">
+                                    <td>关于创新管理，我想和你当面聊聊。</td>
+                                    <td>王宽师</td>
+                                    <td>2016-09-26</td>
+                                    <td>
+                                        <div class="tpl-table-black-operation">
+                                            <a href="javascript:;">
+                                                <i class="am-icon-pencil"></i> 编辑
+                                            </a>
+                                            <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <i class="am-icon-trash"></i> 删除
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>究竟是趋势带动投资，还是投资引领趋势？</td>
+                                    <td>着迷</td>
+                                    <td>2016-09-26</td>
+                                    <td>
+                                        <div class="tpl-table-black-operation">
+                                            <a href="javascript:;">
+                                                <i class="am-icon-pencil"></i> 编辑
+                                            </a>
+                                            <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <i class="am-icon-trash"></i> 删除
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="even gradeC">
+                                    <td>Docker领域再添一员，网易云发布“蜂巢”，加入云计算之争</td>
+                                    <td>醉里挑灯看键</td>
+                                    <td>2016-09-26</td>
+                                    <td>
+                                        <div class="tpl-table-black-operation">
+                                            <a href="javascript:;">
+                                                <i class="am-icon-pencil"></i> 编辑
+                                            </a>
+                                            <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <i class="am-icon-trash"></i> 删除
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- more data -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
-                <div class="am-panel am-panel-default">
-                    <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-3'}">最近留言<span
-                            class="am-icon-chevron-down am-fr"></span></div>
-                    <div class="am-panel-bd am-collapse am-in am-cf" id="collapse-panel-3">
-                        <ul class="am-comments-list admin-content-comment">
-                            <li class="am-comment">
-                                <a href="#"><img
-                                        src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96"
-                                        alt="" class="am-comment-avatar" width="48" height="48"></a>
-                                <div class="am-comment-main">
-                                    <header class="am-comment-hd">
-                                        <div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 评论于
-                                            <time>2014-7-12 15:30</time>
-                                        </div>
-                                    </header>
-                                    <div class="am-comment-bd"><p>遵循 “移动优先（Mobile First）”、“渐进增强（Progressive
-                                        enhancement）”的理念，可先从移动设备开始开发网站，逐步在扩展的更大屏幕的设备上，专注于最重要的内容和交互，很好。</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="am-comment">
-                                <a href="#"><img
-                                        src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96"
-                                        alt="" class="am-comment-avatar" width="48" height="48"></a>
-                                <div class="am-comment-main">
-                                    <header class="am-comment-hd">
-                                        <div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 评论于
-                                            <time>2014-7-12 15:30</time>
-                                        </div>
-                                    </header>
-                                    <div class="am-comment-bd"><p>有效减少为兼容旧浏览器的臃肿代码；基于 CSS3
-                                        的交互效果，平滑、高效。AMUI专注于现代浏览器（支持HTML5），不再为过时的浏览器耗费资源，为更有价值的用户提高更好的体验。</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                        <ul class="am-pagination am-fr admin-content-pagination">
-                            <li class="am-disabled"><a href="#">&laquo;</a></li>
-                            <li class="am-active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">&raquo;</a></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
-
-    <footer class="admin-content-footer">
-        <hr>
-        <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
-    </footer>
 </div>
-<!-- content end -->
+<script th:src="@{/assets/js/amazeui.min.js}"></script>
+<script th:src="@{/assets/js/amazeui.datatables.min.js}"></script>
+<script th:src="@{/assets/js/dataTables.responsive.min.js}"></script>
+<script th:src="@{/assets/js/echarts.min.js}"></script>
+<script th:src="@{/assets/js/app.js}"></script>
 </body>
 </html>
