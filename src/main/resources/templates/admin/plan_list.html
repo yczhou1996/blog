@@ -6,16 +6,13 @@
 </head>
 <body>
 <script th:src="@{/assets/js/theme.js}"></script>
-<!-- content start -->
 <div class="tpl-content-wrapper">
     <div class="row-content am-cf">
         <div class="row">
             <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                 <div class="widget am-cf">
                     <div class="widget-head am-cf">
-                        <div class="widget-title  am-cf">文章列表</div>
-
-
+                        <div class="widget-title  am-cf">计划列表/plan</div>
                     </div>
                     <div class="widget-body  am-fr">
 
@@ -23,7 +20,8 @@
                             <div class="am-form-group">
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
-                                        <button type="button" class="am-btn am-btn-default am-btn-success" onclick="modifyPlan()"><span
+                                        <button type="button" class="am-btn am-btn-default am-btn-success"
+                                                onclick="modifyPlan()"><span
                                                 class="am-icon-plus"></span> 新增
                                         </button>
                                         <button type="button" class="am-btn am-btn-default am-btn-danger"><span
@@ -54,16 +52,20 @@
                                     <td th:text="${dateUtil.dateFormat(plan.startTime, 'yyyy-MM-dd')}"></td>
                                     <td th:text="${dateUtil.dateFormat(plan.endTime, 'yyyy-MM-dd')}"></td>
 
-                                    <td th:if="${plan.startTime} lt ${new java.util.Date()} and ${plan.endTime} gt ${new java.util.Date()} ">进行中</td>
-                                    <td th:if="${plan.startTime} gt ${new java.util.Date()}  ">未开始</td>
-                                    <td th:if="${plan.endTime} lt ${new java.util.Date()}  ">已结束</td>
+                                    <td th:if="${plan.startTime} lt ${new java.util.Date()} and ${plan.endTime} gt ${new java.util.Date()} ">
+                                        <span class="am-badge am-badge-success am-radius">进行中</span></td>
+                                    <td th:if="${plan.startTime} gt ${new java.util.Date()}  "><span
+                                            class="am-badge am-badge-success am-radius">未开始</span></td>
+                                    <td th:if="${plan.endTime} lt ${new java.util.Date()}  "><span
+                                            class="am-badge am-badge-success am-radius">已结束</span></td>
 
                                     <td>
                                         <div class="tpl-table-black-operation">
                                             <a th:onclick="'modifyPlan('+${plan.id}+');'">
                                                 <i class="am-icon-pencil"></i> 编辑
                                             </a>
-                                            <a th:onclick="'delPlans('+${plan.id}+')'" class="tpl-table-black-operation-del">
+                                            <a th:onclick="'delPlans('+${plan.id}+')'"
+                                               class="tpl-table-black-operation-del">
                                                 <i class="am-icon-trash"></i> 删除
                                             </a>
                                         </div>
@@ -127,11 +129,6 @@
         </div>
     </div>
 </div>
-<script th:src="@{/assets/js/amazeui.min.js}"></script>
-<script th:src="@{/assets/js/amazeui.datatables.min.js}"></script>
-<script th:src="@{/assets/js/dataTables.responsive.min.js}"></script>
-<script th:src="@{/assets/js/app.js}"></script>
 <script th:src="@{/js/plan.js}"></script>
-<!-- content end -->
 </body>
 </html>
