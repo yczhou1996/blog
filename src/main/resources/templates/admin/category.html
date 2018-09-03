@@ -5,54 +5,55 @@
     <title>category</title>
 </head>
 <body>
-<!-- content start -->
-<div class="admin-content">
-    <div class="admin-content-body">
-        <div class="am-cf am-padding am-padding-bottom-0">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">分类</strong> /
-                <small>Category</small>
-            </div>
-        </div>
+<script th:src="@{/assets/js/theme.js}"></script>
+<div class="tpl-content-wrapper">
+    <div class="row-content am-cf">
+        <div class="row">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title  am-cf">分类</div>
+                    </div>
 
-        <hr>
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                            <div class="am-panel-hd">
+                            </div>
+                            <div class="am-panel-bd">
+                                <div class="am-dropdown" data-am-dropdown th:each="c:${categories}">
+                                    <button type="button" style="margin-top: 10px"
+                                            th:class="'am-btn am-btn-' + ${common.rand_color()} + ' am-dropdown-toggle'">
+                                        <th:block th:text="${c.name}"/>
+                                        <th:block th:text="' ('+(${c.count!=null}?${c.count}:0)+')'"/>
+                                        <span class="am-icon-caret-down"></span></button>
+                                    <ul class="am-dropdown-content" role="menu">
+                                        <li><a href="javascript:void(0)" th:attr="id=${c.id},name=${c.name}"
+                                               class="edit-category">修改</a>
+                                        </li>
+                                        <li><a href="javascript:void(0)" th:attr="id=${c.id}"
+                                               class="del-category">删除</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="am-g">
-            <div class="am-u-sm-12">
-                <div class="am-panel-hd">
-                </div>
-                <div class="am-panel-bd">
-                    <div class="am-dropdown" data-am-dropdown th:each="c:${categories}">
-                        <button type="button" style="margin-top: 10px"
-                                th:class="'am-btn am-btn-' + ${common.rand_color()} + ' am-dropdown-toggle'">
-                            <th:block th:text="${c.name}"/>
-                            <th:block th:text="' ('+(${c.count!=null}?${c.count}:0)+')'"/>
-                            <span class="am-icon-caret-down"></span></button>
-                        <ul class="am-dropdown-content" role="menu">
-                            <li><a href="javascript:void(0)" th:attr="id=${c.id},name=${c.name}"
-                                   class="edit-category">修改</a>
-                            </li>
-                            <li><a href="javascript:void(0)" th:attr="id=${c.id}"
-                                   class="del-category">删除</a></li>
-                        </ul>
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-3">
+                            <div class="am-input-group am-input-group-sm" style="margin-left: 12px">
+                                <input type="hidden" id="cid"/>
+                                <input type="text" id="cname" class="am-form-field" placeholder="请输入分类名称">
+                                <span class="am-input-group-btn">
+                        <button id="save-category-btn" class="am-btn am-btn-secondary" type="button">保存分类</button>
+                    </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="am-g">
-            <div class="am-u-sm-12 am-u-md-3">
-                <div class="am-input-group am-input-group-sm" style="margin-left: 12px">
-                    <input type="hidden" id="cid"/>
-                    <input type="text" id="cname" class="am-form-field" placeholder="请输入分类名称">
-                    <span class="am-input-group-btn">
-                        <button id="save-category-btn" class="am-btn am-btn-secondary" type="button">保存分类</button>
-                    </span>
-                </div>
-            </div>
-        </div>
     </div>
-
-    <div th:replace="comm/footer::htmlfooter"></div>
+</div>
 </div>
 <script th:src="@{/js/category.js}"></script>
 </body>
