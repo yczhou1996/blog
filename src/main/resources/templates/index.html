@@ -51,7 +51,7 @@
                 <ul>
                     <!-- 欢迎语 -->
                     <li class="am-text-sm tpl-header-navbar-welcome">
-                        <a href="javascript:;">欢迎你, <span>Amaze UI</span> </a>
+                        <a href="javascript:;">欢迎你, <span th:text="${user.fullname}"></span> </a>
                     </li>
 
                     <!-- 新邮件 -->
@@ -192,7 +192,7 @@
         <div class="tpl-sidebar-user-panel">
             <div class="tpl-user-panel-slide-toggleable">
                 <div class="tpl-user-panel-profile-picture">
-                    <img th:src="@{/imgs/akari.jpg}" alt="">
+                    <img th:src="@{${user!=null and user.photo!=null}?${user.photo}:'imgs/akari.jpg'}">
                 </div>
                 <span class="user-panel-logged-in-text">
               <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
