@@ -274,6 +274,7 @@ $('.tpl-skiner-toggle').on('click', function() {
 
 $('.tpl-skiner-content-bar').find('span').on('click', function() {
     $('body').attr('class', $(this).attr('data-color'))
+    $('#iframe').contents().find('body').attr('class', $(this).attr('data-color'))
     saveSelectColor.Color = $(this).attr('data-color');
     // 保存选择项
     storageSave(saveSelectColor);
@@ -293,14 +294,14 @@ function autoLeftNav() {
     $('.tpl-header-switch-button').on('click', function() {
         if ($('.left-sidebar').is('.active')) {
             if ($(window).width() > 1024) {
-                $('.tpl-content-wrapper').removeClass('active');
+                $('#iframe').contents().find('.tpl-content-wrapper').removeClass('active');
             }
             $('.left-sidebar').removeClass('active');
         } else {
 
             $('.left-sidebar').addClass('active');
             if ($(window).width() > 1024) {
-                $('.tpl-content-wrapper').addClass('active');
+                $('#iframe').contents().find('.tpl-content-wrapper').addClass('active');
             }
         }
     })
