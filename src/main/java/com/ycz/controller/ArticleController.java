@@ -2,9 +2,9 @@ package com.ycz.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.ycz.constant.WebConst;
-import com.ycz.model.Bo.RestResponseBo;
-import com.ycz.model.Vo.ArticleVo;
-import com.ycz.model.Vo.CategoryVo;
+import com.ycz.model.bo.RestResponseBo;
+import com.ycz.model.vo.ArticleVo;
+import com.ycz.model.vo.CategoryVo;
 import com.ycz.service.IArticleService;
 import com.ycz.service.ICategoryService;
 import com.ycz.utils.CommonsUtil;
@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @Controller
 @RequestMapping( value = "admin/article" )
 public class ArticleController {

@@ -1,8 +1,11 @@
 package com.ycz.dao;
 
-import com.ycz.model.Vo.UserVo;
+import com.ycz.model.vo.UserVo;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author admin
+ */
 @Component
 public interface UserVoMapper {
     int deleteByPrimaryKey(Integer id);

@@ -6,8 +6,8 @@ import com.ycz.constant.WebConst;
 import com.ycz.dao.ArticleVoMapper;
 import com.ycz.dao.CategoryVoMapper;
 import com.ycz.dao.RelationshipVoMapper;
-import com.ycz.model.Vo.ArticleVo;
-import com.ycz.model.Vo.RelationshipVoKey;
+import com.ycz.model.vo.ArticleVo;
+import com.ycz.model.vo.RelationshipVoKey;
 import com.ycz.service.IArticleService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @Service
 public class ArticleServiceImpl implements IArticleService {
 

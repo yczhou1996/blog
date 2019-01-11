@@ -2,13 +2,16 @@ package com.ycz.service.impl;
 
 import com.ycz.constant.WebConst;
 import com.ycz.dao.CategoryVoMapper;
-import com.ycz.model.Vo.CategoryVo;
+import com.ycz.model.vo.CategoryVo;
 import com.ycz.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @Service
 public class CategoryServiceImpl implements ICategoryService {
 

@@ -1,10 +1,13 @@
 package com.ycz.dao;
 
-import com.ycz.model.Vo.ArticleVo;
+import com.ycz.model.vo.ArticleVo;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @Component
 public interface ArticleVoMapper {
     int deleteByPrimaryKey(Integer id);

@@ -1,7 +1,7 @@
 package com.ycz.interceptor;
 
 import com.ycz.constant.WebConst;
-import com.ycz.model.Vo.UserVo;
+import com.ycz.model.vo.UserVo;
 import com.ycz.service.IUserService;
 import com.ycz.utils.CommonsUtil;
 import com.ycz.utils.DateUtil;
@@ -13,6 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @author admin
+ */
 @Component
 public class BaseInterceptor implements HandlerInterceptor {
 

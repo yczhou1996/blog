@@ -3,7 +3,7 @@ package com.ycz.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.ycz.dao.GalleryVoMapper;
-import com.ycz.model.Vo.GalleryVo;
+import com.ycz.model.vo.GalleryVo;
 import com.ycz.service.IGalleryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @Service
 public class GalleryServiceImpl implements IGalleryService {
 

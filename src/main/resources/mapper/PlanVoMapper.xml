@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ycz.dao.PlanVoMapper" >
-  <resultMap id="BaseResultMap" type="com.ycz.model.Vo.PlanVo" >
+  <resultMap id="BaseResultMap" type="com.ycz.model.vo.PlanVo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
@@ -14,8 +14,8 @@
     id, title, content, start_time, end_time, add_time
   </sql>
 
-  <resultMap id="PlanResultMap" type="com.ycz.model.Vo.PlanVo" extends="BaseResultMap">
-    <association property="t_user" javaType="com.ycz.model.Vo.UserVo">
+  <resultMap id="PlanResultMap" type="com.ycz.model.vo.PlanVo" extends="BaseResultMap">
+    <association property="t_user" javaType="com.ycz.model.vo.UserVo">
       <id column="id" property="id" jdbcType="INTEGER" />
       <result column="fullname" property="fullname" jdbcType="VARCHAR" />
     </association>
@@ -37,7 +37,7 @@
     delete from t_plan
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.ycz.model.Vo.PlanVo" >
+  <insert id="insert" parameterType="com.ycz.model.vo.PlanVo" >
     insert into t_plan (id, title, content, 
       start_time, end_time, add_time
       )
@@ -45,7 +45,7 @@
       #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{addTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.ycz.model.Vo.PlanVo" >
+  <insert id="insertSelective" parameterType="com.ycz.model.vo.PlanVo" >
     insert into t_plan
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -88,7 +88,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ycz.model.Vo.PlanVo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.ycz.model.vo.PlanVo" >
     update t_plan
     <set >
       <if test="title != null" >
@@ -109,7 +109,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.ycz.model.Vo.PlanVo" >
+  <update id="updateByPrimaryKey" parameterType="com.ycz.model.vo.PlanVo" >
     update t_plan
     set title = #{title,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},

@@ -1,10 +1,13 @@
 package com.ycz.dao;
 
-import com.ycz.model.Vo.GalleryVo;
+import com.ycz.model.vo.GalleryVo;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @Component
 public interface GalleryVoMapper {
     int deleteByPrimaryKey(Integer id);

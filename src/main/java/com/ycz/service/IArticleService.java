@@ -1,8 +1,11 @@
 package com.ycz.service;
 
 import com.github.pagehelper.PageInfo;
-import com.ycz.model.Vo.ArticleVo;
+import com.ycz.model.vo.ArticleVo;
 
+/**
+ * @author admin
+ */
 public interface IArticleService {
 
     /**

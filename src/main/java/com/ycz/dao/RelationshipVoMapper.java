@@ -1,8 +1,11 @@
 package com.ycz.dao;
 
-import com.ycz.model.Vo.RelationshipVoKey;
+import com.ycz.model.vo.RelationshipVoKey;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author admin
+ */
 @Component
 public interface RelationshipVoMapper {
     int deleteByPrimaryKey(RelationshipVoKey key);

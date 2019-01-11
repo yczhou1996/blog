@@ -2,14 +2,17 @@ package com.ycz.service.impl;
 
 import com.ycz.constant.WebConst;
 import com.ycz.dao.UserVoMapper;
-import com.ycz.exception.TipException;
-import com.ycz.model.Vo.UserVo;
+import com.ycz.exception.BusinessException;
+import com.ycz.model.vo.UserVo;
 import com.ycz.service.IUserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author admin
+ */
 @Service
 public class UserServiceImpl implements IUserService {
 
@@ -34,15 +37,15 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserVo login(String username, String password) {
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
-            throw new TipException("账号或密码不能为空");
+            throw new BusinessException("账号或密码不能为空");
         }
         UserVo user = userVoDao.selectByUsername(username);
         if (null == user) {
-            throw new TipException("用户名不存在");
+            throw new BusinessException("用户名不存在");
         }
         password = DigestUtils.md5Hex(password);
         if (!password.equals(user.getPassword())) {
-            throw new TipException("用户名或密码错误");
+            throw new BusinessException("用户名或密码错误");
         }
         return user;
     }

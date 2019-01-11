@@ -1,5 +1,8 @@
-package com.ycz.model.Vo;
+package com.ycz.model.vo;
 
+/**
+ * @author admin
+ */
 public class CategoryVo {
     private Integer id;
 

@@ -1,8 +1,8 @@
 package com.ycz.controller;
 
 import com.ycz.constant.WebConst;
-import com.ycz.model.Bo.RestResponseBo;
-import com.ycz.model.Vo.UserVo;
+import com.ycz.model.bo.RestResponseBo;
+import com.ycz.model.vo.UserVo;
 import com.ycz.service.IUserService;
 import com.ycz.utils.CommonsUtil;
 import com.ycz.utils.FileUploadUtil;
@@ -19,7 +19,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-
+/**
+ * @author admin
+ */
 @Controller
 @RequestMapping(value = "admin/user")
 public class UserController {

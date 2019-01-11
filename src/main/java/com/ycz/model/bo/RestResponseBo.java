@@ -1,10 +1,11 @@
-package com.ycz.model.Bo;
+package com.ycz.model.bo;
 
 /**
  * rest返回对象
- *^
+ * @author admin
  * @param <T>
  */
+
 public class RestResponseBo<T> {
 
     /**

@@ -1,7 +1,7 @@
 package com.ycz.utils;
 
 import com.ycz.constant.WebConst;
-import com.ycz.model.Vo.UserVo;
+import com.ycz.model.vo.UserVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 

@@ -5,8 +5,8 @@ import com.github.pagehelper.PageInfo;
 import com.ycz.constant.WebConst;
 import com.ycz.dao.PlanVoMapper;
 import com.ycz.dao.RelationshipVoMapper;
-import com.ycz.exception.TipException;
-import com.ycz.model.Vo.PlanVo;
+import com.ycz.exception.BusinessException;
+import com.ycz.model.vo.PlanVo;
 import com.ycz.service.IPlanService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @Service
 public class PlanServiceImpl implements IPlanService {
 
@@ -44,11 +47,11 @@ public class PlanServiceImpl implements IPlanService {
     @Override
     public Integer delete(Integer Id) {
         if(null == Id){
-            throw new TipException("系统错误");
+            throw new BusinessException("系统错误");
         }
         int count = relationshipVoDao.countByCid(Id);
         if(count > 0){
-            throw new TipException("分类下有文章");
+            throw new BusinessException("分类下有文章");
         }
         return planVoDao.deleteByPrimaryKey(Id);
     }

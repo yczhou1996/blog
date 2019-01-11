@@ -1,7 +1,10 @@
-package com.ycz.model.Vo;
+package com.ycz.model.vo;
 
 import java.util.Date;
 
+/**
+ * @author admin
+ */
 public class ArticleVo {
     private Integer id;
 

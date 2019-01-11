@@ -1,11 +1,14 @@
 package com.ycz.dao;
 
-import com.ycz.model.Vo.CategoryVo;
+import com.ycz.model.vo.CategoryVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @Component
 public interface CategoryVoMapper {
     int deleteByPrimaryKey(Integer id);

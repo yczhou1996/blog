@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ycz.dao.RelationshipVoMapper" >
-  <resultMap id="BaseResultMap" type="com.ycz.model.Vo.RelationshipVoKey" >
+  <resultMap id="BaseResultMap" type="com.ycz.model.vo.RelationshipVoKey" >
     <id column="aid" property="aid" jdbcType="INTEGER" />
     <id column="cid" property="cid" jdbcType="INTEGER" />
   </resultMap>
@@ -14,16 +14,16 @@
     delete from t_relationships
     where aid = #{aid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByPrimaryKey" parameterType="com.ycz.model.Vo.RelationshipVoKey" >
+  <delete id="deleteByPrimaryKey" parameterType="com.ycz.model.vo.RelationshipVoKey" >
     delete from t_relationships
     where aid = #{aid,jdbcType=INTEGER}
       and cid = #{cid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.ycz.model.Vo.RelationshipVoKey" >
+  <insert id="insert" parameterType="com.ycz.model.vo.RelationshipVoKey" >
     insert into t_relationships (aid, cid)
     values (#{aid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.ycz.model.Vo.RelationshipVoKey" >
+  <insert id="insertSelective" parameterType="com.ycz.model.vo.RelationshipVoKey" >
     insert into t_relationships
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="aid != null" >

@@ -1,10 +1,13 @@
 package com.ycz.dao;
 
-import com.ycz.model.Vo.PlanVo;
+import com.ycz.model.vo.PlanVo;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @Component
 public interface PlanVoMapper {
     int deleteByPrimaryKey(Integer id);

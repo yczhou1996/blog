@@ -1,8 +1,11 @@
 package com.ycz.service;
 
 import com.github.pagehelper.PageInfo;
-import com.ycz.model.Vo.GalleryVo;
+import com.ycz.model.vo.GalleryVo;
 
+/**
+ * @author admin
+ */
 public interface IGalleryService {
 
     /**

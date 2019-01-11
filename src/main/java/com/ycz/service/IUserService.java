@@ -1,7 +1,10 @@
 package com.ycz.service;
 
-import com.ycz.model.Vo.UserVo;
+import com.ycz.model.vo.UserVo;
 
+/**
+ * @author admin
+ */
 public interface IUserService {
 
     /**

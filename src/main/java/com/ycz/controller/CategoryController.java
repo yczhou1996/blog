@@ -1,8 +1,8 @@
 package com.ycz.controller;
 
 import com.ycz.constant.WebConst;
-import com.ycz.model.Bo.RestResponseBo;
-import com.ycz.model.Vo.CategoryVo;
+import com.ycz.model.bo.RestResponseBo;
+import com.ycz.model.vo.CategoryVo;
 import com.ycz.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @Controller
 @RequestMapping(value = "/admin/category")
 public class CategoryController {

@@ -2,9 +2,9 @@ package com.ycz.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.ycz.constant.WebConst;
-import com.ycz.model.Bo.RestResponseBo;
-import com.ycz.model.Vo.GalleryVo;
-import com.ycz.model.Vo.UserVo;
+import com.ycz.model.bo.RestResponseBo;
+import com.ycz.model.vo.GalleryVo;
+import com.ycz.model.vo.UserVo;
 import com.ycz.service.IGalleryService;
 import com.ycz.utils.CommonsUtil;
 import com.ycz.utils.FileUploadUtil;
@@ -21,6 +21,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @Controller
 @RequestMapping( value = "/admin/gallery" )
 public class GalleryController {

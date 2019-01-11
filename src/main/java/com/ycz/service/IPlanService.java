@@ -1,8 +1,11 @@
 package com.ycz.service;
 
 import com.github.pagehelper.PageInfo;
-import com.ycz.model.Vo.PlanVo;
+import com.ycz.model.vo.PlanVo;
 
+/**
+ * @author admin
+ */
 public interface IPlanService {
     /**
      * 新增对象

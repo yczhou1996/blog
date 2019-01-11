@@ -1,9 +1,12 @@
 package com.ycz.service;
 
-import com.ycz.model.Vo.CategoryVo;
+import com.ycz.model.vo.CategoryVo;
 
 import java.util.List;
 
+/**
+ * @author admin
+ */
 public interface ICategoryService {
 
     /**
