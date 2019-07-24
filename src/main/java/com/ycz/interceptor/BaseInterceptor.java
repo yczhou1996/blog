@@ -32,7 +32,7 @@ public class BaseInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         String contextPath = request.getContextPath();
         System.out.println(contextPath);
-        String url = request.getRequestURI();
+        String uri = request.getRequestURI();
 
         UserVo user = CommonsUtil.getLoginUser(request);
         if(null == user){
@@ -42,7 +42,7 @@ public class BaseInterceptor implements HandlerInterceptor {
                 request.getSession().setAttribute(WebConst.LOGIN_SESSION_KEY, user);
             }
         }
-        if (url.startsWith(contextPath + "/admin") && !url.startsWith(contextPath + "/login") && null == user) {
+        if (uri.startsWith(contextPath + "/admin") && !uri.startsWith(contextPath + "/login") && null == user) {
             response.sendRedirect(request.getContextPath() + "/login");
             return false;
         }

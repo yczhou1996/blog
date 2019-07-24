@@ -9,9 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan("com.ycz.dao")
-public class BlogApplication {
+public class PersonManageApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BlogApplication.class, args);
+		SpringApplication.run(PersonManageApplication.class, args);
 	}
 }
