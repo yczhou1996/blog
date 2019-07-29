@@ -15,7 +15,7 @@ import java.util.List;
  * @author admin
  */
 @Controller
-@RequestMapping(value = "admin/category")
+@RequestMapping(value = "/admin/category")
 public class CategoryController {
 
     @Autowired

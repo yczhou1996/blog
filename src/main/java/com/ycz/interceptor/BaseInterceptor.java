@@ -42,15 +42,15 @@ public class BaseInterceptor implements HandlerInterceptor {
                 request.getSession().setAttribute(WebConst.LOGIN_SESSION_KEY, user);
             }
         }
-        if (uri.startsWith(contextPath + "/admin") && !uri.startsWith(contextPath + "/login") && null == user) {
-            response.sendRedirect(request.getContextPath() + "/login");
+        if (uri.startsWith(contextPath + "/admin") && !uri.startsWith(contextPath + "/admin/login") && null == user) {
+            response.sendRedirect(request.getContextPath() + "/admin/login");
             return false;
         }
         return true;
     }
 
     @Override
-    public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
+    public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) {
         httpServletRequest.setAttribute("dateUtil", dateUtil);
         httpServletRequest.setAttribute("common", commonsUtil);
     }

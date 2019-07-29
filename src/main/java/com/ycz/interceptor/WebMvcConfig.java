@@ -7,10 +7,10 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Component
 /**
  * @author admin
  */
+@Component
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Autowired
@@ -18,7 +18,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(baseInterceptor).excludePathPatterns("/admin/assets/**").excludePathPatterns("/admin/js/**");
+        registry.addInterceptor(baseInterceptor)
+                .excludePathPatterns("/admin/assets/**")
+                .excludePathPatterns("/admin/images/**")
+                .excludePathPatterns("/admin/imgs/**")
+                .excludePathPatterns("/admin/js/**")
+        ;
     }
 
     @Override

@@ -21,7 +21,7 @@ import java.util.List;
  * @author admin
  */
 @Controller
-@RequestMapping( value = "admin/article" )
+@RequestMapping( value = "/admin/article" )
 public class ArticleController {
 
     private Logger logger = LoggerFactory.getLogger(ArticleController.class);

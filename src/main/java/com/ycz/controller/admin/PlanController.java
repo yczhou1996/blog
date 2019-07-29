@@ -23,7 +23,7 @@ import java.util.Date;
  * @author admin
  */
 @Controller
-@RequestMapping("admin/plan")
+@RequestMapping("/admin/plan")
 public class PlanController {
 
     @Autowired

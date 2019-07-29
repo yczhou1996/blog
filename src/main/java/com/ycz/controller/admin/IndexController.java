@@ -19,12 +19,12 @@ public class IndexController {
     public String index(HttpServletRequest request){
         UserVo userVo = CommonsUtil.getLoginUser(request);
         request.setAttribute("user", userVo);
-        return "admin/index";
+        return "/admin/index";
     }
 
 
     @GetMapping(value = "/home")
     public String home(){
-        return "admin/home";
+        return "/admin/home";
     }
 }

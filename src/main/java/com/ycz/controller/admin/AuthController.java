@@ -19,7 +19,7 @@ import java.io.IOException;
  * @author admin
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("admin")
 public class AuthController {
 
     @Autowired

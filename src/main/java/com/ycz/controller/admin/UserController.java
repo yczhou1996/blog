@@ -23,17 +23,17 @@ import java.io.IOException;
  * @author admin
  */
 @Controller
-@RequestMapping(value = "admin/user")
+@RequestMapping(value = "/admin/user")
 public class UserController {
 
     @Autowired
     private IUserService userService;
 
     @GetMapping(value = "")
-    public String index(HttpServletRequest request){
+    public String index(HttpServletRequest request) {
         UserVo userVo = CommonsUtil.getLoginUser(request);
         userVo = userService.queryById(userVo.getId());
-        if(null != userVo.getPhoto() && StringUtils.isNotBlank(userVo.getPhoto())) {
+        if (null != userVo.getPhoto() && StringUtils.isNotBlank(userVo.getPhoto())) {
             request.setAttribute("src", userVo.getPhoto());
         }
         return "admin/user";
@@ -41,7 +41,7 @@ public class UserController {
 
     @PostMapping(value = "")
     @ResponseBody
-    public RestResponseBo profile(HttpServletRequest request){
+    public RestResponseBo profile(HttpServletRequest request) {
         UserVo userVo = CommonsUtil.getLoginUser(request);
         userVo = userService.queryById(userVo.getId());
         return RestResponseBo.ok(userVo);
@@ -49,9 +49,9 @@ public class UserController {
 
     @PostMapping(value = "/saveInfo")
     @ResponseBody
-    public RestResponseBo saveUser(@Valid UserVo userVo){
+    public RestResponseBo saveUser(@Valid UserVo userVo) {
         String result = userService.saveInfo(userVo);
-        if(!WebConst.SUCCESS_RESULT.equals(result)){
+        if (!WebConst.SUCCESS_RESULT.equals(result)) {
             return RestResponseBo.fail(result);
         }
         return RestResponseBo.ok();
@@ -59,10 +59,10 @@ public class UserController {
 
     @PostMapping(value = "/savePhoto")
     @ResponseBody
-    public RestResponseBo uploadPhoto(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request){
-        String fname = multipartFile.getOriginalFilename();
+    public RestResponseBo uploadPhoto(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
+        String fName = multipartFile.getOriginalFilename();
         if (multipartFile.getSize() <= WebConst.MAX_FILE_SIZE) {
-            String fkey = FileUploadUtil.getFileKey(fname);
+            String fkey = FileUploadUtil.getFileKey(fName);
             File file = new File(FileUploadUtil.getUploadFilePath() + fkey);
             try {
                 FileCopyUtils.copy(multipartFile.getInputStream(), new FileOutputStream(file));

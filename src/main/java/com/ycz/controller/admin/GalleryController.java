@@ -25,7 +25,7 @@ import java.util.List;
  * @author admin
  */
 @Controller
-@RequestMapping( value = "admin/gallery" )
+@RequestMapping( value = "/admin/gallery" )
 public class GalleryController {
 
     @Autowired

@@ -10,17 +10,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <link rel="icon" type="image/png" href="admin/assets/i/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="admin/assets/i/app-icon72x72@2x.png">
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
     <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
-    <link rel="stylesheet" th:href="@{admin/assets/css/amazeui.min.css}"/>
-    <link rel="stylesheet" th:href="@{admin/assets/css/amazeui.datatables.min.css}"/>
-    <link rel="stylesheet" th:href="@{admin/assets/css/app.css}">
-    <script th:src="@{admin/assets/js/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="@{assets/css/amazeui.min.css}"/>
+    <link rel="stylesheet" th:href="@{assets/css/amazeui.datatables.min.css}"/>
+    <link rel="stylesheet" th:href="@{assets/css/app.css}">
+    <script th:src="@{assets/js/jquery.min.js}"></script>
 </head>
 
 <body data-type="login">
-<script src="admin/assets/js/theme.js"></script>
+<script src="assets/js/theme.js"></script>
 <div class="am-g tpl-g">
     <!-- 风格切换 -->
     <div class="tpl-skiner">
@@ -74,9 +74,9 @@
         </div>
     </div>
 </div>
-<script th:src="@{admin/assets/js/amazeui.min.js}"></script>
-<script th:src="@{admin/assets/js/app.js}"></script>
-<script th:src="@{admin/js/base.js}"></script>
+<script th:src="@{assets/js/amazeui.min.js}"></script>
+<script th:src="@{assets/js/app.js}"></script>
+<script th:src="@{js/base.js}"></script>
 <script>
     var chou = new chou();
     $(function () {
@@ -88,7 +88,7 @@
     function login() {
         $.ajax({
             type: "POST",
-            url: "/login",
+            url: "/admin/login",
             data: $("#loginForm").serialize(),
             dataType: "JSON",
             success: function (result) {
